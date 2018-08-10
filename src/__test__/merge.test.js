@@ -7,7 +7,6 @@ describe('merger solver', () => {
   })
 
   it('merge [] and [2]', () => {
-    console.log(3333333333)
     expect(merger.merge([], [2] )).toEqual([2]);
   })
 
