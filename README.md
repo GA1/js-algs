@@ -1,3 +1,5 @@
+## A repo for algorithms written in js
+
 install the dependencies with:
 
 ```
@@ -8,5 +10,3 @@ Run tests with:
 ```
 yarn test
 ```
-
-Have fun coding!
