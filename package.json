@@ -2,7 +2,9 @@
   "name": "node-es6-starter",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "bignumber.js": "^7.2.1"
+  },
   "scripts": {
     "test": "jest __test__ --verbose",
     "test:watch": "jest __test__ --watch --verbose"
