@@ -1,4 +1,4 @@
-var Queue = require('../queue').Queue;
+let Queue = require('../queue').Queue;
 
 describe('Queue', () => {
 
