@@ -1,15 +1,15 @@
 
 function solve(reservations) {
   function __formatDate(d) {
-    var month = '' + (d.getMonth() + 1)
-    var day = '' + d.getDate()
-    var year = d.getFullYear()
+    let month = '' + (d.getMonth() + 1)
+    let day = '' + d.getDate()
+    let year = d.getFullYear()
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
     return [year, month, day].join('-');
   }
 
-  
+
   let reservationsDates = reservations.map(r => [new Date(r[0]), new Date(r[1])])
   let starts = new Array()
   let ends = new Array()
@@ -19,10 +19,10 @@ function solve(reservations) {
   })
   starts.sort((date1, date2) => date1 - date2)
   ends.sort((date1, date2) => date1 - date2)
-  var busiestDay = null
-  var n = 0
-  var tempN = 0
-  for (var i = 0, j = 0; i < starts.length && j < starts.length;) {
+  let busiestDay = null
+  let n = 0
+  let tempN = 0
+  for (let i = 0, j = 0; i < starts.length && j < starts.length;) {
     if (starts[i] - ends[j] <= 0) {
       tempN++
       if (n < tempN) {
