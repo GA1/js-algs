@@ -38,4 +38,11 @@ Queue.prototype.dequeue = function() {
   return item
 }
 
+Queue.prototype.peek = function() {
+  if (this.isEmpty())
+    throw Error('Queue underflow')
+  const item = this.first.item
+  return item
+}
+
 module.exports.Queue = Queue
