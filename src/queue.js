@@ -13,10 +13,10 @@ Queue.prototype.size = function() {
   return this.N
 }
 
-Queue.prototype.enqueue = function(n) {
+Queue.prototype.enqueue = function(item) {
   const oldLast = this.last
   const newLast = {
-    item: n,
+    item: item,
     next: null,
   }
   if (this.isEmpty())
