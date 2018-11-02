@@ -50,13 +50,11 @@ describe('Queue', () => {
   it('after enqueueing twice and dequeueing, peak returns correct values', () => {
     const q = new Queue()
     q.enqueue(5)
+    expect(q.peek()).toBe(5);
     q.enqueue(7)
-    const result1 = q.dequeue()
-    expect(result1).toBe(5);
-    expect(q.size()).toBe(1);
-    const result2 = q.dequeue()
-    expect(result2).toBe(7);
-    expect(q.size()).toBe(0);
+    expect(q.peek()).toBe(5);
+    q.dequeue()
+    expect(q.peek()).toBe(7);
   });
 
 })
