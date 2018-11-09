@@ -1,9 +1,9 @@
 
 function merge(a, b) {
-  var N = a.length
-  var M = b.length
-  let res = new Array();
-  var i = 0, j = 0
+  const N = a.length
+  const M = b.length
+  const res = new Array();
+  let i = 0, j = 0
   for (; i < N && j < M;) {
     if (a[i] <= b[j]) {
       res.push(a[i])

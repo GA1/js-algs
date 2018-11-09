@@ -15,7 +15,9 @@ function areCorrect(input) {
 
   const stack = new Stack();
 
-  input.split('').forEach(char => {
+  const split = input.split('')
+  for (let i = 0; i < split.length; i++) {
+    const char = split[i]
     const isOpeningChar = openingCharacterMap[char];
     const isClosingChar = closingCharacterMap[char];
 
@@ -30,7 +32,7 @@ function areCorrect(input) {
         stack.pop();
       }
     }
-  });
+  }
 
   return stack.N === 0 ? 1 : 0;
 }
