@@ -22,8 +22,7 @@ function mergeRecursive(a, b) {
     }
     return result
   }
-  const result = []
-  return mergeRecursive(a, 0, b, 0, result)
+  return mergeRecursive(a, 0, b, 0, [])
 }
 
 function merge(a, b) {
