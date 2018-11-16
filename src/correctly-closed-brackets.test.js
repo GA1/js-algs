@@ -1,4 +1,4 @@
-const areCorrect = require('../correctlyClosedBrackets').areCorrect
+const areCorrect = require('./correctly-closed-brackets').areCorrect
 
 describe('correctlyClosedBrackets', () => {
 

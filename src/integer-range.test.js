@@ -1,4 +1,4 @@
-const IntegerRange = require('../integerRange').IntegerRange;
+const IntegerRange = require('./integer-range').IntegerRange;
 
 describe('IntegerRange', () => {
 

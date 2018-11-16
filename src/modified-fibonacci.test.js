@@ -1,4 +1,4 @@
-const modifiedFibonacci = require('../modifiedFibonacci');
+const modifiedFibonacci = require('./modified-fibonacci');
 
 describe('modifiedFibonacci', () => {
 

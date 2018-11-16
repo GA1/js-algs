@@ -1,4 +1,4 @@
-const permutationsStartingWith1 = require('../permutationStartingWith');
+const permutationsStartingWith1 = require('./permutations-starting-with-1');
 
 describe('pertmutationsStartingWith1', () => {
 

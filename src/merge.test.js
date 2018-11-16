@@ -1,4 +1,4 @@
-const merger = require('../merge');
+const merger = require('./merge');
 
 describe('merger solver', () => {
 

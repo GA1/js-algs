@@ -1,4 +1,4 @@
-var task1 = require('../busyDays');
+var task1 = require('./busy-days');
 
 describe('busyDays solver', () => {
 
