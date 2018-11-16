@@ -1,10 +1,10 @@
-var merger = require('../merge');
+const merger = require('../merge');
 
 describe('merger solver', () => {
 
   it('merge [] and []', () => {
-    let A = [];
-    let B = [];
+    const A = [];
+    const B = [];
     const expected = [];
     expect(merger.mergeRecursive(A, B )).toEqual(expected);
     expect(merger.merge(A, B )).toEqual(expected);
