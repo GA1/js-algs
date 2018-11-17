@@ -1,3 +1,4 @@
+const quickSolver = require("./quick")
 
 describe('quick solver', () => {
 
@@ -60,7 +61,5 @@ describe('quick solver', () => {
     expect(areFromStartToEndLowerThan(A, 0, 2, 7)).toEqual(true)
     expect(areFromStartToEndGreaterThan(A, 3, 7, 7)).toEqual(true)
   })
-
-
 
 })
