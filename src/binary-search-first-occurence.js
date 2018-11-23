@@ -2,7 +2,7 @@
 
 function solve(A, e) {
   function solve (A, start, end, e, bestUntilNow) {
-    if (start >= end) {
+    if (start > end) {
       if (A[start] === e)
         return start
       return bestUntilNow

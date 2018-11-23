@@ -2,7 +2,7 @@
 
 function solve(A, e) {
   function solve (A, start, end, e) {
-    if (start === end) {
+    if (start > end) {
       if (A[start] === e)
         return start
       return -1

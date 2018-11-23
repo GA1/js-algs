@@ -1,3 +1,4 @@
+const quickSolver = require('./quick');
 
 describe('quick solver', () => {
 
