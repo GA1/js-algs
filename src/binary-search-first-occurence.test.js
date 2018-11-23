@@ -1,6 +1,6 @@
-const solve = require('./binary-search').solve;
+const solve = require('./binary-search-first-occurence').solve;
 
-describe('Binary search', () => {
+describe('Binary search for first occurence', () => {
 
   it('[0]', () => {
     const A = [0];
@@ -37,4 +37,16 @@ describe('Binary search', () => {
     expect(solve(A, 31)).toBe(-1);
   })
 
+  it('[2, 2, 5, 5, 7, 7, 7, 11, 11, 11, 13, 13, 13, 17, 17, 17, 17, 19, 19, 23, 23, 23, 23, 29, 29]', () => {
+    const A = [2, 2, 5, 5, 7, 7, 7, 11, 11, 11, 13, 13, 13, 17, 17, 17, 17, 19, 19, 23, 23, 23, 23, 29, 29];
+    expect(solve(A, 2)).toBe(0);
+    expect(solve(A, 5)).toBe(2);
+    expect(solve(A, 7)).toBe(4);
+    expect(solve(A, 11)).toBe(7);
+    expect(solve(A, 13)).toBe(10);
+    expect(solve(A, 17)).toBe(13);
+    expect(solve(A, 19)).toBe(17);
+    expect(solve(A, 23)).toBe(19);
+    expect(solve(A, 29)).toBe(23);
+  })
 })
