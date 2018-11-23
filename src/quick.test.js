@@ -1,4 +1,3 @@
-const quickSolver = require('./quick');
 
 describe('quick solver', () => {
 
@@ -57,8 +56,6 @@ describe('quick solver', () => {
   it('[7, 2, 13, 11, 3, 17, 19]', () => {
     const A = [7, 2, 13, 11, 3, 19, 17];
     const result = quickSolver.quick(A);
-    console.log(1111111111)
-    console.log(A)
     expect(result).toEqual(2);
     expect(areFromStartToEndLowerThan(A, 0, 2, 7)).toEqual(true)
     expect(areFromStartToEndGreaterThan(A, 3, 7, 7)).toEqual(true)
