@@ -62,35 +62,6 @@ function constructsAnInsect(insectPart1, insectPart2) {
     (insectPart1 === SPIDER_BUTT && insectPart2 === SPIDER_HEAD) || (insectPart1 === SPIDER_HEAD && insectPart2 === SPIDER_BUTT)
 }
 
-function isSolved(board) {
-
-  const ib1 = board[0]
-  const ib2 = board[1]
-  const ib3 = board[2]
-  const ib4 = board[3]
-  const ib5 = board[4]
-  const ib6 = board[5]
-  const ib7 = board[6]
-  const ib8 = board[7]
-  const ib9 = board[8]
-  if (!ib1 || !ib2 || !ib3 || !ib4|| !ib5 || !ib6 || !ib7 || !ib8 || !ib9) {
-    return false
-  }
-  return constructsAnInsect(ib1.getRight(), ib2.getLeft()) &&
-    constructsAnInsect(ib2.getRight(), ib3.getLeft()) &&
-    constructsAnInsect(ib1.getBottom(), ib4.getTop()) &&
-    constructsAnInsect(ib2.getBottom(), ib5.getTop()) &&
-    constructsAnInsect(ib3.getBottom(), ib6.getTop()) &&
-    constructsAnInsect(ib4.getRight(), ib5.getLeft()) &&
-    constructsAnInsect(ib5.getRight(), ib6.getLeft()) &&
-    constructsAnInsect(ib4.getBottom(), ib7.getTop()) &&
-    constructsAnInsect(ib5.getBottom(), ib8.getTop()) &&
-    constructsAnInsect(ib6.getBottom(), ib9.getTop()) &&
-    constructsAnInsect(ib7.getRight(), ib8.getLeft()) &&
-    constructsAnInsect(ib8.getRight(), ib9.getLeft())
-}
-
-
 function solve() {
   function getAllRotations(block) {
     const block90 = block.turn90degreesClockwise()
@@ -99,7 +70,7 @@ function solve() {
     return [block, block90, block180, block270]
   }
 
-  function initializeQueueWithFirstBlockAndTheirRotations() {
+  function initializeQueueWithAllBlocksAndTheirRotations() {
     const queue = new Queue()
     for (let i = 0; i < N; i++) {
       const blockRotations = getAllRotations(input[i])
@@ -110,7 +81,7 @@ function solve() {
     return queue
   };
 
-  function wasLastAdditionCorrect(blocks) {
+  function isLastBlockConnectedCorrectly(blocks) {
     if (blocks.length === 1) {
       return true
     } else if (blocks.length === 2) {
@@ -130,7 +101,7 @@ function solve() {
     } else if (blocks.length === 8) {
       return constructsAnInsect(blocks[4].getBottom(), blocks[7].getTop()) &&
         constructsAnInsect(blocks[6].getRight(), blocks[7].getLeft())
-    }else if (blocks.length === 9) {
+    } else if (blocks.length === 9) {
       return constructsAnInsect(blocks[5].getBottom(), blocks[8].getTop()) &&
         constructsAnInsect(blocks[7].getRight(), blocks[8].getLeft())
     }
@@ -138,13 +109,13 @@ function solve() {
 
   const solutions = []
 
-  const queue = initializeQueueWithFirstBlockAndTheirRotations()
+  const queue = initializeQueueWithAllBlocksAndTheirRotations()
   while (!queue.isEmpty()) {
     const q = queue.dequeue()
-    if (isSolved(q.blocks)) {
-      solutions.push(q.blocks)
-    } else {
-      if (wasLastAdditionCorrect(q.blocks)) {
+    if (isLastBlockConnectedCorrectly(q.blocks)) {
+      if (q.blocks.length === N) {
+        solutions.push(q.blocks)
+      } else {
         for (let i = 0; i < N; i++) {
           if (!q.indexes.has(i)) {
             const newIndexes = new Set(q.indexes)
@@ -166,10 +137,15 @@ function solve() {
 console.log('STARTING INSECTS BLOCK SOLVER')
 if (!module.parent) {
   const solutions = solve()
-  console.log(solutions)
+  console.log('There are: ' + solutions.length + ' solutions to the problem')
+  console.log('They are:')
+  console.log(solutions.forEach((s, i) => {
+    console.log('solution nr: ' + (i + 1))
+    console.log(s)
+    console.log()
+  }))
 }
 console.log('END INSECTS BLOCK SOLVER')
 
 
 module.exports.InsectBlock = InsectBlock
-module.exports.isSolved = isSolved
