@@ -1,12 +1,3 @@
-// 1 - yellow ass
-// 2 - yellow head
-// 3 - criket's ass
-// 4 - criket's head
-// 5 - ladybird's ass
-// 6 - ladybird's head
-// 7 - spider's ass
-// 8 - spider's head
-
 const YELLOW_BUTT = 1
 const YELLOW_HEAD = 2
 const CRICKET_BUTT = 3
@@ -29,10 +20,29 @@ const input = [
 ]
 
 function solver() {
-  // for ()
+  const board = [
+    [undefined, undefined, undefined],
+    [undefined, undefined, undefined],
+    [undefined, undefined, undefined]
+  ]
+  while (true) {
+
+  }
   console.log('STARTING INSECTS BLOCK SOLVER')
 }
 
+function isSolvedSolved(board) {
+  if (
+    !board[0][0] || !board[0][1] || !board[0][2] ||
+    !board[1][0] || !board[1][1] || !board[1][2] ||
+    !board[2][0] || !board[2][1] || !board[2][2]
+  ) {
+    return false
+  }
+  if (    ) {
+
+  }
+}
 
 solver([])
 
