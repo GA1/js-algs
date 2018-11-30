@@ -142,7 +142,7 @@ if (!module.parent) {
   console.log(solutions.forEach((s, i) => {
     console.log('solution nr: ' + (i + 1))
     console.log(s)
-    console.log()
+    console.log('')
   }))
 }
 console.log('END INSECTS BLOCK SOLVER')
