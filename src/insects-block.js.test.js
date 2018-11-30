@@ -1,4 +1,4 @@
-const insects = require('./insects');
+const insects = require('./insects-block');
 const InsectBlock = insects.InsectBlock;
 
 describe('insectBlocks', () => {
