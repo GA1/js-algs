@@ -8,14 +8,10 @@ function getLeader(A) {
     } else {
       occurrences.set(A[i], occurrences.get(A[i]) + 1)
     }
-  }
-  let result = -1
-  occurrences.forEach((v, k) => {
-    if (Math.floor(A.length / 2) < occurrences.get(k)) {
-      result = k
+    if (Math.floor(A.length / 2) < occurrences.get(A[i])) { // the task specifies that this will happen for some index
+      return A[i]
     }
-  })
-  return result
+  }
 }
 
 function solve(A) {
