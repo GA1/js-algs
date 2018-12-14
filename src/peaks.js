@@ -1,5 +1,3 @@
-// const getPrimeFactors = require('./prime-factors').solve;
-
 function getPrimeFactors(N) {
   const sqrtN = Math.sqrt(N)
   const results = []
@@ -36,7 +34,7 @@ function canBeDividedInBlocks(N, blockSize, peaks) {
   let j = 0
   for (let i = 0; i < N; i = i + blockSize) {
     while (true) {
-      if (i + blockSize <= peaks[j] || j == peaks.length)
+      if (i + blockSize <= peaks[j] || j === peaks.length)
         return false
       if (peaks[j] < i) {
         j++
@@ -49,8 +47,6 @@ function canBeDividedInBlocks(N, blockSize, peaks) {
   return true
 
 }
-
-
 
 function findPeakPositions(A) {
   const peakPositions = []
