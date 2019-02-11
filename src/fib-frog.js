@@ -46,7 +46,7 @@ Queue.prototype.peek = function() {
 }
 
 
-function solve(A) {
+function solution(A) {
   function getValidSteps(steps, curr, A, N) {
     const result = []
     for (let i = 0; i < steps.length; i++) {
@@ -59,6 +59,7 @@ function solve(A) {
   const N = A.length
   const queue = new Queue()
   queue.enqueue({position: -1, numberOfSteps: 0})
+  const visited = new Set()
   while (!queue.isEmpty()) {
     const curr = queue.dequeue()
     if (curr.position === N)
@@ -66,10 +67,14 @@ function solve(A) {
     const steps = stepsLowerOrEqualThan(N - curr.position)
     const validSteps = getValidSteps(steps, curr, A, N)
     validSteps.forEach(s => {
-      queue.enqueue({
-        position: curr.position + s,
-        numberOfSteps: curr.numberOfSteps + 1
-      })
+      if (!visited.has(curr.position + s)) {
+        const neighbor = {
+          position: curr.position + s,
+          numberOfSteps: curr.numberOfSteps + 1
+        };
+        queue.enqueue(neighbor)
+        visited.add(curr.position + s)
+      }
     })
   }
   return -1
@@ -105,5 +110,5 @@ function fibonacci(n) {
     return fibonacci(n - 1) + fibonacci(n - 2)
 }
 
-module.exports.solve = solve
+module.exports.solution = solution
 module.exports.stepsLowerOrEqualThan = stepsLowerOrEqualThan
