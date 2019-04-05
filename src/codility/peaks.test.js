@@ -13,22 +13,22 @@ describe('peaks search', () => {
     expect(findPeakPositions(A)).toEqual([]);
   })
 
-  it('solve of [1]', () => {
+  it('solution of [1]', () => {
     const A = [1]
     expect(solve(A)).toEqual(0);
   })
 
-  it('solve of [3, 5, 3]', () => {
+  it('solution of [3, 5, 3]', () => {
     const A = [3, 5, 3]
     expect(solve(A)).toEqual(1);
   })
 
-  it('solve of [5, 3, 5, 3, 5]', () => {
+  it('solution of [5, 3, 5, 3, 5]', () => {
     const A = [5, 3, 5, 3, 5]
     expect(solve(A)).toEqual(1);
   })
 
-  it('solve of [1, 2, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2]', () => {
+  it('solution of [1, 2, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2]', () => {
     const A = [1, 2, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2]
     expect(solve(A)).toEqual(3);
   })
