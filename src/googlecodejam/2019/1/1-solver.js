@@ -1,21 +1,55 @@
-const fieUtils = require('../../fileUtils');
-const getLines = fieUtils.getLines
-const saveString = fieUtils.saveString
+'use strict';
 
-const solveSingleCase = require('./1-single-case-solver').solveSingleCase
+const fs = require('fs');
+
+process.stdin.resume();
+process.stdin.setEncoding('utf-8');
+
+let inputStrings = '';
+let currentLine = 0;
+
+process.stdin.on('data', inputStdin => {
+  inputStrings += inputStdin;
+});
+
+process.stdin.on('end', _ => {
+  inputStrings = inputStrings.trim().split('\n').map(str => str.trim());
+
+  main(inputStrings);
+});
 
 
-const lines = getLines('./input.in')
+function solveSingleCase(n) {
+  const nString = n.toString()
+  let toSubtract = 0
+  let power = 1
+  for (let i = nString.length - 1; 0 <= i; i--) {
+    const digit = nString.charAt(i)
+    if (digit === '4')
+      toSubtract += power
+    power *= 10
 
-const solutions = []
-
-for (let i = 1; i < lines.length; i++) {
-  const numbers = lines[i].split(' ');
-  const number1 = parseInt(numbers[0])
-  const number2 = parseInt(numbers[1])
-  const solution = solveSingleCase(number1, number2)
-  const solutionString = 'Case #' + i.toString() + ': ' + solution.toString()
-  solutions.push(solutionString)
+  }
+  return [n - toSubtract, toSubtract]
 }
 
-saveString('./output.txt', solutions.join('\n'))
+
+function solveAllCases(inputStrings) {
+  const solutions = []
+  for (let i = 1; i < inputStrings.length; i++) {
+    const inputString = inputStrings[i];
+    const result = solveSingleCase(parseInt(inputString))
+    solutions.push('Case #' + i.toString() + ': ' + result[0].toString() +  ' ' + result[1].toString())
+  }
+  return solutions
+}
+
+
+function main(inputStrings) {
+  const solutions = solveAllCases(inputStrings)
+  console.log(solutions.join('\n'))
+}
+
+module.exports.solveAllCases = solveAllCases
+module.exports.solveSingleCase = solveSingleCase
+
