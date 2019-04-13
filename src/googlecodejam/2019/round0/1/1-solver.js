@@ -8,15 +8,15 @@ const fs = require('fs');
 let inputStrings = '';
 let currentLine = 0;
 
-process.stdin.on('data', inputStdin => {
-  inputStrings += inputStdin;
-});
-
-process.stdin.on('end', _ => {
-  inputStrings = inputStrings.trim().split('\n').map(str => str.trim());
-
-  main(inputStrings);
-});
+// process.stdin.on('data', inputStdin => {
+//   inputStrings += inputStdin;
+// });
+//
+// process.stdin.on('end', _ => {
+//   inputStrings = inputStrings.trim().split('\n').map(str => str.trim());
+//
+//   main(inputStrings);
+// });
 
 
 function solveSingleCase(n) {
