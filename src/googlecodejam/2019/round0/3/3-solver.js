@@ -85,7 +85,7 @@ function solveSingleCase(productCodes, N) {
   }
 
   const pqs = []
-  for (let i = 0; i < productCodes.length; i++) {
+  for (let i = 0; i < productCodes.length; i+æ+) {
     if (codes[i] === -1 || codes[i + 1] === -1) {
       const pq = getTwoPrimeFactorsOfProduct(primes, productCodes[i])
       pqs.push(pq)
