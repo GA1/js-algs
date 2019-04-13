@@ -1,4 +1,4 @@
-æææ
+
 
 function solveSingleCase(C, F, X) {
   let bestTime = X / 2

@@ -1,7 +1,7 @@
 const solveSingleCase = require('./2-solver').solveSingleCase;
 const solveAllCases = require('./2-solver').solveAllCases;
 
-describe('1', () => {
+describe('2', () => {
 
   describe('getTwoPrimeFactorsOfProduct', () => {
 
