@@ -2,8 +2,8 @@
 
 const fs = require('fs');
 
-process.stdin.resume();
-process.stdin.setEncoding('utf-8');
+// process.stdin.resume();
+// process.stdin.setEncoding('utf-8');
 
 let inputStrings = '';
 let currentLine = 0;
