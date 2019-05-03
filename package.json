@@ -6,7 +6,7 @@
     "bignumber.js": "^7.2.1"
   },
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest --verbose --detectOpenHandles",
     "test:watch": "jest --watch --verbose"
   },
   "devDependencies": {
