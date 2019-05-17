@@ -42,7 +42,6 @@ function solveAllCases(inputStrings) {
 
 function main(inputStrings) {
   const solutions = solveAllCases(inputStrings)
-  console.log(solutions.join('\n'))
 }
 
 module.exports.solveAllCases = solveAllCases
