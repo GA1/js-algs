@@ -9,5 +9,19 @@ function solution(A) {
   return absoluteDistinctElements.size
 }
 
+function solution(A) {
+  var abs = A.map(function (val) {
+    return Math.abs(val);
+  }).filter(function (val, index, array) {
+    for (let key = 0; key < A.length; key++) {
+      if (index !== Number(key) && val === array[key]) {
+        return false
+      }
+      return true
+    }
+  })
+  return abs.length
+}
 
-module.exports.solve = solution
+
+  module.exports.solve = solution
