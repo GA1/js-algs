@@ -17,6 +17,11 @@ describe('max profit', () => {
     expect(solution(A)).toEqual(3);
   })
 
+  it('[7, 3]', () => {
+    const A = [7, 3]
+    expect(solution(A)).toEqual(0);
+  })
+
   it('[7, 2, 13]', () => {
     const A = [7, 2, 13]
     expect(solution(A)).toEqual(11);
