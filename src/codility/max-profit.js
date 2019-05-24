@@ -5,7 +5,7 @@ function solution(A) {
   for (let i = 2; i < A.length; i++) {
     if (A[i - 1] < min)
       min = A[i - 1]
-    if (A[i] - min)
+    if (bestProfit < A[i] - min)
       bestProfit = A[i] - min
   }
   return bestProfit > 0 ? bestProfit: 0
