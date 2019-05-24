@@ -1,42 +1,14 @@
 
-function solve(A) {
-  const mins = calculateMinsFromLeft(A)
-  const maxs = calculateMaxFromRight(A)
-  let bestProfit = 0
-  for (let i = 0; i < mins.length; i++) {
-    const currProfit = maxs[i] - mins[i];
-    if (bestProfit < currProfit) {
-      bestProfit = currProfit
-    }
+function solution(A) {
+  let min = A[0]
+  let bestProfit = A[1] - A[0]
+  for (let i = 2; i < A.length; i++) {
+    if (A[i - 1] < min)
+      min = A[i - 1]
+    if (A[i] - min)
+      bestProfit = A[i] - min
   }
-  return bestProfit
+  return bestProfit > 0 ? bestProfit: 0
 }
 
-function calculateMinsFromLeft(A) {
-  const result = []
-  let tempMin = 400000
-  for (let i = 0; i < A.length; i++) {
-    const e = A[i];
-    if (e < tempMin) {
-      tempMin = e
-    }
-    result.push(tempMin)
-  }
-  return result
-}
-
-function calculateMaxFromRight(A) {
-  const result = []
-  let tempMax = 0
-  for (let i = A.length - 1; i >= 0; i--) {
-    const e = A[i];
-    if (tempMax < e) {
-      tempMax = e
-    }
-    result.push(tempMax)
-  }
-  result.reverse()
-  return result
-}
-
-module.exports.solve = solve
+module.exports.solution = solution
