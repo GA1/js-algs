@@ -22,4 +22,8 @@ describe('advent of code 2019, day 1', () => {
     expect(algorithm(119962)).toBe(39985);
   });
 
+  it('98468', () => {
+    expect(algorithm(98468)).toBe(32820);
+  });
+
 })
