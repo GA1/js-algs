@@ -1,6 +1,6 @@
 const {algorithm} = require('./2-algorithm');
 
-describe('advent of code 2019, day 2', () => {
+describe('advent of code 2019, day 2, part 2', () => {
 
   it('12', () => {
     expect(algorithm(12)).toBe(2);
