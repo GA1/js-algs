@@ -15,9 +15,5 @@ describe('Dobble simulation', () => {
       const tempSolution = new Set(['B', 'C']);
       expect(anyPreviousSolutionHasTwoCommonElements(previousSolutions, tempSolution)).toBe(true);
     });
-
-
   })
-
-
 })

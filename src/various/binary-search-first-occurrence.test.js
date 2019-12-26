@@ -1,4 +1,4 @@
-const solve = require('./binary-search-first-occurence').solve;
+const solve = require('./binary-search-first-occurrence').solve;
 
 describe('Binary search for first occurence', () => {
 
