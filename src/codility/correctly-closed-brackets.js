@@ -1,4 +1,4 @@
-const Stack = require("./stack").Stack;
+const Stack = require("../various/stack").Stack;
 
 function areCorrect(input) {
   const openingCharacterMap = {
