@@ -19,7 +19,6 @@ class NonDirectedGraph {
   }
 
   getNeighbors(v) {
-    console.log(this.edges)
     return this.edges.get(v)
   }
 }
