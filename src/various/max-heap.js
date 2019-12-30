@@ -1,56 +1,65 @@
 class MaxHeap {
   constructor() {
-    this.items = Array(100)
-    this.size = 0
+    this._items = Array(100)
+    this._size = 0
+  }
+
+  size() {
+    return this._size
   }
 
   _sink() {
-    const items = this.items
-    let i = 1
-    while (i < this.size - 1) {
-      const leftChildIndex = 2*i
-      const rightChildIndex = 2*i + 1
-      if (items[i] < items[rightChildIndex]) {
-        this._swap(i, rightChildIndex)
-        i = rightChildIndex
-      } else if (items[i] < items[leftChildIndex]) {
-        this._swap(i, leftChildIndex)
-        i = leftChildIndex
+    const items = this._items
+    let i = 0
+    while (2*i + 1 < this.size()) {
+      const leftChildIndex = 2*i + 1
+      const rightChildIndex = 2*i + 2
+      let toSwap = leftChildIndex
+      if (rightChildIndex < this.size() && items[leftChildIndex] < items[rightChildIndex]) {
+        toSwap = rightChildIndex
+      }
+      if (!(items[i] < items[toSwap])) {
+        break
       } else {
-        break;
+        this._swap(i, toSwap)
       }
     }
-
   }
 
   _swim() {
-    let i = this.size()
+    let i = this.size() - 1
     while (0 < i) {
-      const parentIndex = Math.floor(i / 2)
-      if (this.items[parentIndex] < this.items[i]) {
+      const parentIndex = Math.floor((i - 1) / 2)
+      if (this._items[parentIndex] < this._items[i]) {
         this._swap(parentIndex, i)
       }
+      i = parentIndex
     }
   }
 
   _swap(i, j) {
-    const temp = this.items[i]
-    this.items[i] = this.items[j]
-    this.items[j] = temp
+    const temp = this._items[i]
+    this._items[i] = this._items[j]
+    this._items[j] = temp
   }
 
   delMax() {
-    this._swap(0, this.size() - 1)
-    this.swim()
-    this.size = this.size - 1
+    const result = this._items[0]
+    this._items[0] = this._items[this.size() - 1]
+    this._items[this.size() - 1] = undefined
+    this._size = this._size - 1
+    this._sink()
+    return result
   }
 
-  insert() {
-    this.size = this.size + 1
+  getMax() {
+    return this._items[0]
   }
 
-  size() {
-    return this.size
+  insert(item) {
+    this._items[this.size()] = item
+    this._size = this._size + 1
+    this._swim()
   }
 
   isEmpty() {
