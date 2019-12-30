@@ -64,7 +64,7 @@ describe('MaxHeap', () => {
       mh.insert(7)
       mh.insert(5)
       expect(mh.getMax()).toEqual(7);
-      expect(mh.size()).toEqual(1);
+      expect(mh.size()).toEqual(2);
     })
   })
 })
