@@ -23,7 +23,7 @@ class MaxHeap {
       } else {
         this._swap(i, toSwap)
       }
-      i = 2*i + 1
+      i = toSwap
     }
   }
 

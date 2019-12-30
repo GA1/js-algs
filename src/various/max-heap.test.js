@@ -56,6 +56,18 @@ describe('MaxHeap', () => {
       expect(mh.delMax()).toEqual(19);
       expect(mh.delMax()).toEqual(18);
     })
+
+    it("after adding 0, 1, 2, ..., 49, 50 elements", () => {
+      const mh = new MaxHeap()
+      const UPPER_LIMIT = 50;
+      for (let i = 0; i < UPPER_LIMIT + 1; i++) {
+        mh.insert(i)
+      }
+      for (let i = UPPER_LIMIT; 0 <= i; i--) {
+        expect(mh.delMax()).toEqual(i);
+      }
+    })
+
   })
 
   describe('getMax', () => {
