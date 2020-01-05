@@ -1,7 +1,9 @@
-class MaxHeap {
-  constructor() {
+class MaxPriorityQueue {
+  constructor(compareFunction) {
+    // this should be a auto-resizing array if we want to have a truly optimal data structure
     this._items = Array(100)
     this._size = 0
+    this._compareFunction = compareFunction
   }
 
   size() {
@@ -15,10 +17,10 @@ class MaxHeap {
       const leftChildIndex = 2*i + 1
       const rightChildIndex = 2*i + 2
       let toSwap = leftChildIndex
-      if (rightChildIndex < this.size() && items[leftChildIndex] < items[rightChildIndex]) {
+      if (rightChildIndex < this.size() && 0 < this._compareFunction(items[leftChildIndex], items[rightChildIndex])) {
         toSwap = rightChildIndex
       }
-      if (!(items[i] < items[toSwap])) {
+      if (!(0 < this._compareFunction(items[i], items[toSwap]))) {
         break
       } else {
         this._swap(i, toSwap)
@@ -31,7 +33,7 @@ class MaxHeap {
     let i = this.size() - 1
     while (0 < i) {
       const parentIndex = Math.floor((i - 1) / 2)
-      if (this._items[parentIndex] < this._items[i]) {
+      if (0 < this._compareFunction(this._items[parentIndex], this._items[i])) {
         this._swap(parentIndex, i)
       }
       i = parentIndex
@@ -68,4 +70,4 @@ class MaxHeap {
   }
 }
 
-module.exports.MaxHeap = MaxHeap
+module.exports.MaxPriorityQueue = MaxPriorityQueue
