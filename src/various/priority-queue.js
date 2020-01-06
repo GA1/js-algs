@@ -1,4 +1,4 @@
-class MaxPriorityQueue {
+class PriorityQueue {
   constructor(compareFunction) {
     // this should be a auto-resizing array if we want to have a truly optimal data structure
     this._items = Array(100)
@@ -70,4 +70,4 @@ class MaxPriorityQueue {
   }
 }
 
-module.exports.MaxPriorityQueue = MaxPriorityQueue
+module.exports.PriorityQueue = PriorityQueue
