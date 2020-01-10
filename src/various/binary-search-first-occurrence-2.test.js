@@ -39,6 +39,7 @@ describe('Binary search for first occurrence non recursive version', () => {
 
   it('[2, 2, 5, 5, 7, 7, 7, 11, 11, 11, 13, 13, 13, 17, 17, 17, 17, 19, 19, 23, 23, 23, 23, 29, 29]', () => {
     const A = [2, 2, 5, 5, 7, 7, 7, 11, 11, 11, 13, 13, 13, 17, 17, 17, 17, 19, 19, 23, 23, 23, 23, 29, 29];
+    expect(binarySearchFirstOccurence2(A, 0)).toBe(-1);
     expect(binarySearchFirstOccurence2(A, 2)).toBe(0);
     expect(binarySearchFirstOccurence2(A, 5)).toBe(2);
     expect(binarySearchFirstOccurence2(A, 7)).toBe(4);
