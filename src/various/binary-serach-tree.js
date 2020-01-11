@@ -20,6 +20,21 @@ class BinarySerachTree {
     return minRecursive(this.root, null)
   }
 
+  max() {
+    const minRecursive = (node, min) => {
+      if (!node) {
+        return min
+      } else {
+        if (node.right) {
+          return minRecursive(node.right, node.value)
+        } else {
+          return node.value
+        }
+      }
+    }
+    return minRecursive(this.root, null)
+  }
+
   insert(e) {
     const insertRecursive = (e, node) => {
       if (!node) {
