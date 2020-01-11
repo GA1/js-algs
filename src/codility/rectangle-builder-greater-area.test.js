@@ -36,7 +36,7 @@ describe('rectangle builder greater area', () => {
       expect(solution([2, 2, 2, 2], 3)).toBe(1);
     });
 
-    it('[2, 2, 3, 3, 2, 2], 3', () => {
+    it('[2, 2, 3,7, 5, 3, 2], 0, 3, 2, 2], 3', () => {
       expect(solution([2, 2, 3, 3, 2, 2], 3)).toBe(2);
     });
 
