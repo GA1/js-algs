@@ -5,6 +5,21 @@ class BinarySerachTree {
     this.root = null
   }
 
+  min() {
+    const minRecursive = (node, min) => {
+      if (!node) {
+        return min
+      } else {
+        if (node.left) {
+          return minRecursive(node.left, node.value)
+        } else {
+          return node.value
+        }
+      }
+    }
+    return minRecursive(this.root, null)
+  }
+
   insert(e) {
     const insertRecursive = (e, node) => {
       if (!node) {

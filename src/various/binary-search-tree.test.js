@@ -43,5 +43,61 @@ describe('binary search tree', () => {
       bst.insert(13)
       expect(bst.size()).toEqual(4)
     })
+
+    it('size after inserting [7, 13, 17, 21, 37, 5, 41, 5, 2]', () => {
+      const bst = new BinarySerachTree()
+      bst.insert(7)
+      bst.insert(13)
+      bst.insert(17)
+      bst.insert(21)
+      bst.insert(37)
+      bst.insert(5)
+      bst.insert(41)
+      bst.insert(5)
+      bst.insert(2)
+      expect(bst.size()).toEqual(9)
+    })
+  })
+
+  describe('min', () => {
+    it('get min after creation', () => {
+      const bst = new BinarySerachTree()
+      expect(bst.min()).toEqual(null)
+    })
+
+    it('get min after inserting [2]', () => {
+      const bst = new BinarySerachTree()
+      bst.insert(2)
+      expect(bst.min()).toEqual(2)
+    })
+
+    it('get min after inserting [2, 5]', () => {
+      const bst = new BinarySerachTree()
+      bst.insert(2)
+      bst.insert(5)
+      expect(bst.min()).toEqual(2)
+    })
+
+    it('get min after inserting [7, 5, 2]', () => {
+      const bst = new BinarySerachTree()
+      bst.insert(7)
+      bst.insert(5)
+      bst.insert(2)
+      expect(bst.min()).toEqual(2)
+    })
+
+    it('get min after inserting [7, 13, 17, 21, 37, 5, 41, 5, 2]', () => {
+      const bst = new BinarySerachTree()
+      bst.insert(7)
+      bst.insert(13)
+      bst.insert(17)
+      bst.insert(21)
+      bst.insert(37)
+      bst.insert(5)
+      bst.insert(41)
+      bst.insert(5)
+      bst.insert(2)
+      expect(bst.min()).toEqual(2)
+    })
   })
 })
