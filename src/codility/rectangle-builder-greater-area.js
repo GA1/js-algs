@@ -17,8 +17,6 @@ function binarySearchFirstOccurrence(B, start, side, X) {
 
 // not passing 100% in codility
 function solution(A, X) {
-
-
   const lengthsToOccurrences = new Map()
   for (let i = 0; i < A.length; i++) {
     const a = A[i]
@@ -28,29 +26,26 @@ function solution(A, X) {
       lengthsToOccurrences.set(a, lengthsToOccurrences.get(a) + 1)
     }
   }
-
-  const eligibleSticksForMixedPairs = []
-  const eligibleSticksForSquares = []
-  for (let [key, value] of lengthsToOccurrences) {
-    if (4 <= value) {
-      eligibleSticksForMixedPairs.push(key)
-      eligibleSticksForSquares.push(key)
-    } else if (value === 2 || value === 3) {
-      eligibleSticksForMixedPairs.push(key)
-    }
-  }
-  const sortedEligibleSticksForMixedPairs = [...eligibleSticksForMixedPairs].sort((x, y) => y - x)
-  let counter = 0
   const incrementCounterOrReturn = (toAdd) => {
     if (1000000000 < counter + toAdd)
       return - 1
     counter += toAdd
   }
-  for (let i = 0; i < eligibleSticksForSquares.length; i++) {
-    if (X <= eligibleSticksForSquares[i] * eligibleSticksForSquares[i]) {
-      incrementCounterOrReturn(1)
+  const eligibleSticksForMixedPairs = []
+  let counter = 0
+  for (let [key, value] of lengthsToOccurrences) {
+    if (value < 2) {
+      continue
+    } else if (value < 4) {
+      eligibleSticksForMixedPairs.push(key)
+    } else {
+      eligibleSticksForMixedPairs.push(key)
+      if (X <= key * key) {
+        incrementCounterOrReturn(1)
+      }
     }
   }
+  const sortedEligibleSticksForMixedPairs = [...eligibleSticksForMixedPairs].sort((x, y) => y - x)
   for (let i = 0; i < sortedEligibleSticksForMixedPairs.length; i++) {
     const j = binarySearchFirstOccurrence(sortedEligibleSticksForMixedPairs, i + 1, sortedEligibleSticksForMixedPairs[i], X)
     if (j !== -1) {
