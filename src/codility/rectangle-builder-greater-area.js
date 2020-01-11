@@ -1,21 +1,22 @@
 
+function binarySearchFirstOccurrence(B, start, side, X) {
+  let end = B.length - 1
+  let mid
+  while (start <= end) {
+    mid = Math.floor(start + (end - start)/2)
+    if (X <= B[mid] * side && (mid + 1 === B.length || B[mid + 1] * side) < X) {
+      return mid
+    } else if (B[mid] * side < X) {
+      end = mid - 1
+    } else {
+      start = mid + 1
+    }
+  }
+  return -1
+}
+
 // not passing 100% in codility
 function solution(A, X) {
-  function binarySearchFirstOccurrence(B, start, side, X) {
-    let end = B.length - 1
-    let mid
-    while (start <= end) {
-      mid = Math.floor(start + (end - start)/2)
-      if (X <= B[mid] * side && (mid + 1 === B.length || B[mid + 1] * side) < X) {
-        return mid
-      } else if (B[mid] * side < X) {
-        end = mid - 1
-      } else {
-        start = mid + 1
-      }
-    }
-    return -1
-  }
 
 
   const lengthsToOccurrences = new Map()
@@ -60,3 +61,4 @@ function solution(A, X) {
 }
 
 module.exports.solution = solution
+module.exports.binarySearchFirstOccurrence = binarySearchFirstOccurrence
