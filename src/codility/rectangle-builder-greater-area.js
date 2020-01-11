@@ -14,7 +14,6 @@ function binarySearchFirstOccurrence(A, start, side, X) {
   return result
 }
 
-// not passing 100% in codility
 function solution(A, X) {
   const lengthsToOccurrences = new Map()
   for (let i = 0; i < A.length; i++) {
@@ -25,13 +24,13 @@ function solution(A, X) {
       lengthsToOccurrences.set(a, lengthsToOccurrences.get(a) + 1)
     }
   }
+  const eligibleSticksForMixedPairs = []
+  let counter = 0
   const incrementCounterOrReturn = (toAdd) => {
     if (1000000000 < counter + toAdd)
       return - 1
     counter += toAdd
   }
-  const eligibleSticksForMixedPairs = []
-  let counter = 0
   for (let [key, value] of lengthsToOccurrences) {
     if (value < 2) {
       continue
@@ -40,7 +39,7 @@ function solution(A, X) {
     } else {
       eligibleSticksForMixedPairs.push(key)
       if (X <= key * key) {
-        incrementCounterOrReturn(1)
+        counter += 1
       }
     }
   }
@@ -48,9 +47,11 @@ function solution(A, X) {
   for (let i = 0; i < sortedEligibleSticksForMixedPairs.length; i++) {
     const j = binarySearchFirstOccurrence(sortedEligibleSticksForMixedPairs, i + 1, sortedEligibleSticksForMixedPairs[i], X)
     if (j !== -1) {
-      incrementCounterOrReturn(j - i)
+      counter += (j - i)
     }
   }
+  if (1000000000 < counter)
+    return - 1
   return counter
 }
 
