@@ -142,4 +142,55 @@ describe('binary search tree', () => {
       expect(bst.max()).toEqual(41)
     })
   })
+
+  describe('height', () => {
+    it('height after creation', () => {
+      const bst = new BinarySerachTree()
+      expect(bst.height()).toEqual(0)
+    })
+
+    it('height after inserting [2]', () => {
+      const bst = new BinarySerachTree()
+      bst.insert(2)
+      expect(bst.height()).toEqual(1)
+    })
+
+    it('height after inserting [2, 5]', () => {
+      const bst = new BinarySerachTree()
+      bst.insert(5)
+      bst.insert(2)
+      expect(bst.height()).toEqual(2)
+    })
+
+    it('height after inserting [5, 7, 2]', () => {
+      const bst = new BinarySerachTree()
+      bst.insert(5)
+      bst.insert(7)
+      bst.insert(2)
+      expect(bst.height()).toEqual(2)
+    })
+
+    it('height after inserting [2, 5, 7]', () => {
+      const bst = new BinarySerachTree()
+      bst.insert(2)
+      bst.insert(5)
+      bst.insert(7)
+      expect(bst.height()).toEqual(3)
+    })
+
+    it('height after inserting [7, 13, 17, 21, 37, 5, 41, 5, 2]', () => {
+      const bst = new BinarySerachTree()
+      bst.insert(21)
+      bst.insert(17)
+      bst.insert(7)
+      bst.insert(13)
+      bst.insert(37)
+      bst.insert(5)
+      bst.insert(41)
+      bst.insert(5)
+      bst.insert(2)
+      expect(bst.height()).toEqual(5)
+    })
+  })
+
 })

@@ -5,6 +5,34 @@ class BinarySerachTree {
     this.root = null
   }
 
+  insert(e) {
+    const insertRecursive = (e, node) => {
+      if (!node) {
+        return {
+          left: null,
+          right: null,
+          value: e,
+          size: 1,
+        }
+      } else {
+        if (node.value <= e) {
+          node.right = insertRecursive(e, node.right)
+        } else if (e < node.value) {
+          node.left = insertRecursive(e, node.left)
+        }
+        node.size++
+        return node
+      }
+    }
+    this.root = insertRecursive(e, this.root)
+  }
+
+  size() {
+    if (this.root)
+      return this.root.size
+    return 0
+  }
+
   min() {
     const minRecursive = (node, min) => {
       if (!node) {
@@ -35,32 +63,15 @@ class BinarySerachTree {
     return minRecursive(this.root, null)
   }
 
-  insert(e) {
-    const insertRecursive = (e, node) => {
+  height() {
+    const heightRecursive = (node) => {
       if (!node) {
-        return {
-          left: null,
-          right: null,
-          value: e,
-          size: 1,
-        }
+        return 0
       } else {
-        if (node.value <= e) {
-          node.right = insertRecursive(e, node.right)
-        } else if (e < node.value) {
-          node.left = insertRecursive(e, node.left)
-        }
-        node.size++
-        return node
+        return 1 + Math.max(heightRecursive(node.left), heightRecursive(node.right))
       }
     }
-    this.root = insertRecursive(e, this.root)
-  }
-
-  size() {
-    if (this.root)
-      return this.root.size
-    return 0
+    return heightRecursive(this.root)
   }
 }
 
