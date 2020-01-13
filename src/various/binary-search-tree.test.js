@@ -252,6 +252,35 @@ describe('binary search tree', () => {
       })
     })
 
-    
+    // describe('level order', () => {
+    //   it('after creation', () => {
+    //     const bst = new BinarySerachTree()
+    //     expect(bst.traverseInPostorder()).toEqual([])
+    //   })
+    //
+    //   it('after adding 2', () => {
+    //     const bst = new BinarySerachTree()
+    //     bst.insert(2)
+    //     expect(bst.traverseInPostorder()).toEqual([2])
+    //   })
+    //
+    //   it('after adding 2, 5', () => {
+    //     const bst = new BinarySerachTree()
+    //     bst.insert(5)
+    //     bst.insert(2)
+    //     expect(bst.traverseInPostorder()).toEqual([2, 5])
+    //   })
+    //
+    //   it('after adding 5, 3, 1, 2, 9', () => {
+    //     const bst = new BinarySerachTree()
+    //     bst.insert(5)
+    //     bst.insert(3)
+    //     bst.insert(1)
+    //     bst.insert(0)
+    //     bst.insert(2)
+    //     bst.insert(9)
+    //     expect(bst.traverseInPostorder()).toEqual([5, 3, 9, 1, 0, 2])
+    //   })
+    // })
   })
 })

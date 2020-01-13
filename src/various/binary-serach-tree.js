@@ -1,3 +1,5 @@
+const Queue = require('./queue')
+
 
 class BinarySerachTree {
   constructor() {
@@ -99,6 +101,22 @@ class BinarySerachTree {
         if (node.right) {
           traverseInOrderRecursive(traversed, node.right)
         }
+      }
+      return traversed
+    }
+    return traverseInOrderRecursive([], this.root)
+  }
+
+  traverseInPostorder() {
+    const traverseInOrderRecursive = (traversed, node) => {
+      if (node) {
+        if (node.left) {
+          traverseInOrderRecursive(traversed, node.left)
+        }
+        if (node.right) {
+          traverseInOrderRecursive(traversed, node.right)
+        }
+        traversed.push(node.value)
       }
       return traversed
     }
