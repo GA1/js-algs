@@ -1,4 +1,4 @@
-const Queue = require('./queue')
+const { Queue } = require('./queue')
 
 
 class BinarySerachTree {
@@ -121,6 +121,26 @@ class BinarySerachTree {
       return traversed
     }
     return traverseInOrderRecursive([], this.root)
+  }
+
+  traverseInLevelOrder() {
+    if (!this.root) {
+      return []
+    }
+    const traversed = []
+    const queue = new Queue()
+    queue.enqueue(this.root)
+    while (!queue.isEmpty()) {
+      const node = queue.dequeue();
+      traversed.push(node.value)
+      if (node.left) {
+        queue.enqueue(node.left)
+      }
+      if (node.right) {
+        queue.enqueue(node.right)
+      }
+    }
+    return traversed;
   }
 }
 
