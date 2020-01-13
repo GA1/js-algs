@@ -88,6 +88,22 @@ class BinarySerachTree {
     }
     return traverseInOrderRecursive([], this.root)
   }
+
+  traverseInPreorder() {
+    const traverseInOrderRecursive = (traversed, node) => {
+      if (node) {
+        traversed.push(node.value)
+        if (node.left) {
+          traverseInOrderRecursive(traversed, node.left)
+        }
+        if (node.right) {
+          traverseInOrderRecursive(traversed, node.right)
+        }
+      }
+      return traversed
+    }
+    return traverseInOrderRecursive([], this.root)
+  }
 }
 
 

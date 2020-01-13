@@ -213,7 +213,7 @@ describe('binary search tree', () => {
         expect(bst.traverseInOrder()).toEqual([2, 5])
       })
 
-      it('after adding 2, 3, 5', () => {
+      it('after adding 3, 2, 5', () => {
         const bst = new BinarySerachTree()
         bst.insert(3)
         bst.insert(2)
@@ -221,6 +221,37 @@ describe('binary search tree', () => {
         expect(bst.traverseInOrder()).toEqual([2, 3, 5])
       })
     })
-  })
 
+    describe('in preorder', () => {
+      it('after creation', () => {
+        const bst = new BinarySerachTree()
+        expect(bst.traverseInPreorder()).toEqual([])
+      })
+
+      it('after adding 2', () => {
+        const bst = new BinarySerachTree()
+        bst.insert(2)
+        expect(bst.traverseInPreorder()).toEqual([2])
+      })
+
+      it('after adding 2, 5', () => {
+        const bst = new BinarySerachTree()
+        bst.insert(2)
+        bst.insert(5)
+        expect(bst.traverseInPreorder()).toEqual([2, 5])
+      })
+
+      it('after adding 5, 3, 1, 2, 9', () => {
+        const bst = new BinarySerachTree()
+        bst.insert(5)
+        bst.insert(3)
+        bst.insert(1)
+        bst.insert(2)
+        bst.insert(9)
+        expect(bst.traverseInPreorder()).toEqual([5, 3, 1, 2, 9])
+      })
+    })
+
+    
+  })
 })
