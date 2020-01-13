@@ -193,4 +193,34 @@ describe('binary search tree', () => {
     })
   })
 
+  describe('traverse', () => {
+    describe('in order', () => {
+      it('after creation', () => {
+        const bst = new BinarySerachTree()
+        expect(bst.traverseInOrder()).toEqual([])
+      })
+
+      it('after adding 2', () => {
+        const bst = new BinarySerachTree()
+        bst.insert(2)
+        expect(bst.traverseInOrder()).toEqual([2])
+      })
+
+      it('after adding 2, 5', () => {
+        const bst = new BinarySerachTree()
+        bst.insert(2)
+        bst.insert(5)
+        expect(bst.traverseInOrder()).toEqual([2, 5])
+      })
+
+      it('after adding 2, 3, 5', () => {
+        const bst = new BinarySerachTree()
+        bst.insert(3)
+        bst.insert(2)
+        bst.insert(5)
+        expect(bst.traverseInOrder()).toEqual([2, 3, 5])
+      })
+    })
+  })
+
 })

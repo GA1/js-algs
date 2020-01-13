@@ -1,6 +1,5 @@
 
 class BinarySerachTree {
-
   constructor() {
     this.root = null
   }
@@ -72,6 +71,22 @@ class BinarySerachTree {
       }
     }
     return heightRecursive(this.root)
+  }
+
+  traverseInOrder() {
+    const traverseInOrderRecursive = (traversed, node) => {
+      if (node) {
+        if (node.left) {
+          traverseInOrderRecursive(traversed, node.left)
+        }
+        traversed.push(node.value)
+        if (node.right) {
+          traverseInOrderRecursive(traversed, node.right)
+        }
+      }
+      return traversed
+    }
+    return traverseInOrderRecursive([], this.root)
   }
 }
 
