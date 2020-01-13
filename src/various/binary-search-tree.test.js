@@ -252,6 +252,36 @@ describe('binary search tree', () => {
       })
     })
 
+    describe('in postorder', () => {
+      it('after creation', () => {
+        const bst = new BinarySerachTree()
+        expect(bst.traverseInPostorder()).toEqual([])
+      })
+
+      it('after adding 2', () => {
+        const bst = new BinarySerachTree()
+        bst.insert(2)
+        expect(bst.traverseInPostorder()).toEqual([2])
+      })
+
+      it('after adding 2, 5', () => {
+        const bst = new BinarySerachTree()
+        bst.insert(2)
+        bst.insert(5)
+        expect(bst.traverseInPostorder()).toEqual([5, 2])
+      })
+
+      it('after adding 5, 3, 1, 2, 9', () => {
+        const bst = new BinarySerachTree()
+        bst.insert(5)
+        bst.insert(3)
+        bst.insert(1)
+        bst.insert(2)
+        bst.insert(9)
+        expect(bst.traverseInPostorder()).toEqual([2, 1, 3, 9, 5])
+      })
+    })
+
     describe('level order', () => {
       it('after creation', () => {
         const bst = new BinarySerachTree()

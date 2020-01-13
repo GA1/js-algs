@@ -78,13 +78,9 @@ class BinarySerachTree {
   traverseInOrder() {
     const traverseInOrderRecursive = (traversed, node) => {
       if (node) {
-        if (node.left) {
-          traverseInOrderRecursive(traversed, node.left)
-        }
+        traverseInOrderRecursive(traversed, node.left)
         traversed.push(node.value)
-        if (node.right) {
-          traverseInOrderRecursive(traversed, node.right)
-        }
+        traverseInOrderRecursive(traversed, node.right)
       }
       return traversed
     }
@@ -95,12 +91,8 @@ class BinarySerachTree {
     const traverseInOrderRecursive = (traversed, node) => {
       if (node) {
         traversed.push(node.value)
-        if (node.left) {
-          traverseInOrderRecursive(traversed, node.left)
-        }
-        if (node.right) {
-          traverseInOrderRecursive(traversed, node.right)
-        }
+        traverseInOrderRecursive(traversed, node.left)
+        traverseInOrderRecursive(traversed, node.right)
       }
       return traversed
     }
@@ -110,12 +102,8 @@ class BinarySerachTree {
   traverseInPostorder() {
     const traverseInOrderRecursive = (traversed, node) => {
       if (node) {
-        if (node.left) {
-          traverseInOrderRecursive(traversed, node.left)
-        }
-        if (node.right) {
-          traverseInOrderRecursive(traversed, node.right)
-        }
+        traverseInOrderRecursive(traversed, node.left)
+        traverseInOrderRecursive(traversed, node.right)
         traversed.push(node.value)
       }
       return traversed
