@@ -49,6 +49,10 @@ class BinarySerachTree {
     return minRecursive(this.root, null)
   }
 
+  delete(elem) {
+    return null
+  }
+
   max() {
     const minRecursive = (node, min) => {
       if (!node) {

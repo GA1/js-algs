@@ -59,6 +59,13 @@ describe('binary search tree', () => {
     })
   })
 
+  describe('delete', () => {
+    it('delete a non existent element', () => {
+      const bst = new BinarySerachTree()
+      expect(bst.delete(7)).toEqual(null)
+    })
+  })
+
   describe('min', () => {
     it('get min after creation', () => {
       const bst = new BinarySerachTree()
