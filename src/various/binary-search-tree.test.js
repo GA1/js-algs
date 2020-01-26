@@ -64,7 +64,60 @@ describe('binary search tree', () => {
       const bst = new BinarySerachTree()
       expect(bst.delete(7)).toEqual(null)
     })
+
+    it('delete the only element', () => {
+      const bst = new BinarySerachTree()
+      bst.insert(7)
+      expect(bst.delete(7)).toEqual(null)
+      expect(bst.size()).toEqual(0)
+      expect(bst.height()).toEqual(0)
+    })
   })
+
+  describe.only('deleteMin', () => {
+    it('deletes min when no elements', () => {
+      const bst = new BinarySerachTree()
+      bst.insert(7)
+      bst.deleteMin()
+      expect(bst.size()).toEqual(0)
+      expect(bst.height()).toEqual(0)
+    })
+
+    it('deletes when 1 element', () => {
+      const bst = new BinarySerachTree()
+      bst.insert(7)
+      bst.deleteMin()
+      expect(bst.size()).toEqual(0)
+      expect(bst.height()).toEqual(0)
+    })
+
+    it('deletes when [2, 7] elements', () => {
+      const bst = new BinarySerachTree()
+      bst.insert(2)
+      bst.insert(7)
+      bst.deleteMin()
+      expect(bst.traverseInLevelOrder([7]))
+    })
+
+    it('deletes when [7, 2] elements', () => {
+      const bst = new BinarySerachTree()
+      bst.insert(7)
+      bst.insert(2)
+      bst.deleteMin()
+      expect(bst.traverseInLevelOrder()).toEqual([7])
+    })
+
+    it('deletes when [2, 5, 7] elements', () => {
+      const bst = new BinarySerachTree()
+      bst.insert(2)
+      bst.insert(5)
+      bst.insert(7)
+      bst.deleteMin()
+      expect(bst.traverseInLevelOrder()).toEqual([5, 7])
+    })
+
+  })
+
 
   describe('min', () => {
     it('get min after creation', () => {

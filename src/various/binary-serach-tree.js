@@ -1,7 +1,7 @@
 const { Queue } = require('./queue')
 
 
-class BinarySerachTree {
+class BinarySearchTree {
   constructor() {
     this.root = null
   }
@@ -39,33 +39,56 @@ class BinarySerachTree {
       if (!node) {
         return min
       } else {
-        if (node.left) {
-          return minRecursive(node.left, node.value)
-        } else {
-          return node.value
-        }
+        return minRecursive(node.left, node.value)
       }
     }
     return minRecursive(this.root, null)
+  }
+
+  deleteMin() {
+    const deleteMinRecursive = (node) => {
+      if (!node) {
+        return undefined
+      } else {
+        node.left = deleteMinRecursive(node.left)
+      }
+    }
+    this.root = deleteMinRecursive(this.root)
   }
 
   delete(elem) {
-    return null
+    const deleteRecursive = (node, elem) => {
+      if (!node) {
+        return null
+      }
+      if (node.value === elem) {
+        if (!node.right) {
+          return node.left
+        }
+        if (!node.left) {
+          return node.right
+        }
+        const tempNode = node
+        node.right =
+
+        this.root.right = deleteRecursive(this.root.right, elem)
+      } else {
+
+      }
+      return x
+    }
+    this.root = deleteRecursive(this.root, elem)
   }
 
   max() {
-    const minRecursive = (node, min) => {
+    const maxRecursive = (node, min) => {
       if (!node) {
         return min
       } else {
-        if (node.right) {
-          return minRecursive(node.right, node.value)
-        } else {
-          return node.value
-        }
+        return maxRecursive(node.right, node.value)
       }
     }
-    return minRecursive(this.root, null)
+    return maxRecursive(this.root, null)
   }
 
   height() {
@@ -137,4 +160,4 @@ class BinarySerachTree {
 }
 
 
-module.exports.BinarySerachTree = BinarySerachTree
+module.exports.BinarySerachTree = BinarySearchTree
