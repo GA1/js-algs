@@ -34,20 +34,22 @@ class BinarySearchTree {
     return 0
   }
 
-  min() {
-    const minRecursive = (node, min) => {
-      if (!node) {
-        return min
-      } else {
-        return minRecursive(node.left, node.value)
-      }
+  _minRecursive(node, min) {
+    if (!node) {
+      return min
+    } else {
+      return this._minRecursive(node.left, node.value)
     }
-    return minRecursive(this.root, null)
   }
+
+  min() {
+    return this._minRecursive(this.root, null)
+  }
+
 
   deleteMin() {
     if (this.isEmpty()) {
-      throw new Error('Unsupported information: cannot delete min from an empty BST')
+      throw new Error('Unsupported operation: cannot delete min from an empty BST')
     }
     const deleteMinRecursive = (node) => {
       if (!node.left) {
@@ -65,6 +67,9 @@ class BinarySearchTree {
   }
 
   delete(elem) {
+    if (this.isEmpty()) {
+      return new Error('Unsupported operation: cannot delete from an empty BST')
+    }
     const deleteRecursive = (node, elem) => {
       if (!node) {
         return null
@@ -76,14 +81,20 @@ class BinarySearchTree {
         if (!node.left) {
           return node.right
         }
-        const tempNode = node
-        node.right =
-
-        this.root.right = deleteRecursive(this.root.right, elem)
+        const minOnTheRight = this._minRecursive(node.right)
+        node = this.deleteMin()
+        return {
+          left: node.left,
+          right: node.right,
+          value: minOnTheRight,
+          size: 1,
+        }
+      } else if (elem < node.value) {
+        node.left = deleteRecursive(node.left, elem)
       } else {
-
+        node.right = deleteRecursive(node.right, elem)
       }
-      return x
+      return node
     }
     this.root = deleteRecursive(this.root, elem)
   }

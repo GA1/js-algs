@@ -60,27 +60,41 @@ describe('binary search tree', () => {
   })
 
   describe('delete', () => {
-    it('delete a non existent element', () => {
-      const bst = new BinarySerachTree()
-      expect(bst.delete(7)).toEqual(null)
+    it('can\'t delete when no elements', () => {
+      try {
+        const bst = new BinarySerachTree()
+        bst.delete(7)
+      } catch (e) {
+        expect(e.message).toBe('Unsupported operation: cannot delete from an empty BST');
+      }
     })
 
-    it('delete the only element', () => {
+    it('deletes the only element', () => {
       const bst = new BinarySerachTree()
       bst.insert(7)
-      expect(bst.delete(7)).toEqual(null)
+      bst.delete(7)
       expect(bst.size()).toEqual(0)
       expect(bst.height()).toEqual(0)
     })
+
+    it('deletes 2 after inserting [2, 7 ]', () => {
+      const bst = new BinarySerachTree()
+      bst.insert(2)
+      bst.insert(7)
+      bst.delete(2)
+      expect(bst.size()).toEqual(1)
+      expect(bst.height()).toEqual(1)
+    })
+
   })
 
-  describe.only('deleteMin', () => {
-    it('deletes min when no elements', () => {
+  describe('deleteMin', () => {
+    it('can\'t delete min when no elements', () => {
       try {
         const bst = new BinarySerachTree()
         bst.deleteMin()
       } catch (e) {
-        expect(e.message).toBe('Unsupported information: cannot delete min from an empty BST');
+        expect(e.message).toBe('Unsupported operation: cannot delete min from an empty BST');
       }
     });
 
