@@ -84,7 +84,7 @@ describe('binary search tree', () => {
       expect(bst.height()).toEqual(0)
     })
 
-    it('deletes 2 after inserting [2, 7 ]', () => {
+    it('deletes 2 after inserting [2, 7]', () => {
       const bst = new BinarySerachTree()
       bst.insert(2)
       bst.insert(7)
@@ -103,15 +103,60 @@ describe('binary search tree', () => {
       expect(bst.traverseInLevelOrder([20, 15]))
     })
 
+    it('deletes 15 after inserting [20, 15, 10]', () => {
+      const bst = new BinarySerachTree()
+      insert(bst, [20, 15, 10])
+      bst.delete(15)
+      expect(bst.size()).toEqual(2)
+      expect(bst.height()).toEqual(2)
+      expect(bst.traverseInLevelOrder([20, 10]))
+    })
 
-    // it('deletes 10 after inserting [20, 10, 7, 15, 12]', () => {
-    //   const bst = new BinarySerachTree()
-    //   insert(bst, [20, 10, 7, 15, 12])
-    //   bst.delete(10)
-    //   expect(bst.size()).toEqual(4)
-    //   expect(bst.height()).toEqual(3)
-    //   expect(bst.traverseInLevelOrder([20, 12, 7, 15]))
-    // })
+    it('deletes 15 after inserting [20, 15, 10]', () => {
+      const bst = new BinarySerachTree()
+      insert(bst, [20, 15, 10])
+      bst.delete(20)
+      expect(bst.size()).toEqual(2)
+      expect(bst.height()).toEqual(2)
+      expect(bst.traverseInLevelOrder([15, 10]))
+    })
+
+    it('deletes 20 after inserting [10, 15, 20]', () => {
+      const bst = new BinarySerachTree()
+      insert(bst, [10, 15, 20])
+      bst.delete(10)
+      expect(bst.size()).toEqual(2)
+      expect(bst.height()).toEqual(2)
+      expect(bst.traverseInLevelOrder([15, 20]))
+    })
+
+    it('deletes 20 after inserting [10, 15, 20]', () => {
+      const bst = new BinarySerachTree()
+      insert(bst, [10, 15, 20])
+      bst.delete(15)
+      expect(bst.size()).toEqual(2)
+      expect(bst.height()).toEqual(2)
+      expect(bst.traverseInLevelOrder([10, 20]))
+    })
+
+    it('deletes 20 after inserting [10, 15, 20]', () => {
+      const bst = new BinarySerachTree()
+      insert(bst, [10, 15, 20])
+      bst.delete(20)
+      expect(bst.size()).toEqual(2)
+      expect(bst.height()).toEqual(2)
+      expect(bst.traverseInLevelOrder([10, 15]))
+    })
+
+
+    it('deletes 10 after inserting [20, 10, 7, 15, 12]', () => {
+      const bst = new BinarySerachTree()
+      insert(bst, [20, 10, 7, 15, 12])
+      bst.delete(10)
+      expect(bst.size()).toEqual(4)
+      expect(bst.height()).toEqual(3)
+      expect(bst.traverseInLevelOrder([20, 12, 7, 15]))
+    })
 
   })
 
