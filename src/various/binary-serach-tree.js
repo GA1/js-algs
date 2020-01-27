@@ -46,14 +46,22 @@ class BinarySearchTree {
   }
 
   deleteMin() {
+    if (this.isEmpty()) {
+      throw new Error('Unsupported information: cannot delete min from an empty BST')
+    }
     const deleteMinRecursive = (node) => {
-      if (!node) {
-        return undefined
+      if (!node.left) {
+        return node.right
       } else {
         node.left = deleteMinRecursive(node.left)
+        return node
       }
     }
     this.root = deleteMinRecursive(this.root)
+  }
+
+  isEmpty() {
+    return this.size() === 0;
   }
 
   delete(elem) {

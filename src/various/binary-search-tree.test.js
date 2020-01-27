@@ -76,12 +76,13 @@ describe('binary search tree', () => {
 
   describe.only('deleteMin', () => {
     it('deletes min when no elements', () => {
-      const bst = new BinarySerachTree()
-      bst.insert(7)
-      bst.deleteMin()
-      expect(bst.size()).toEqual(0)
-      expect(bst.height()).toEqual(0)
-    })
+      try {
+        const bst = new BinarySerachTree()
+        bst.deleteMin()
+      } catch (e) {
+        expect(e.message).toBe('Unsupported information: cannot delete min from an empty BST');
+      }
+    });
 
     it('deletes when 1 element', () => {
       const bst = new BinarySerachTree()
