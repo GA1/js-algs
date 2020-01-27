@@ -1,6 +1,13 @@
 const { BinarySerachTree } = require("./binary-serach-tree");
 
 describe('binary search tree', () => {
+
+  const insert = (bst, toInsert) => {
+    for (let i = 0; i < toInsert.length; i++) {
+      bst.insert(toInsert[i])
+    }
+  }
+
   describe('size', () => {
     it('size before inserting', () => {
       const bst = new BinarySerachTree()
@@ -84,7 +91,27 @@ describe('binary search tree', () => {
       bst.delete(2)
       expect(bst.size()).toEqual(1)
       expect(bst.height()).toEqual(1)
+      expect(bst.traverseInLevelOrder([7]))
     })
+
+    it('deletes 10 after inserting [20, 15, 10]', () => {
+      const bst = new BinarySerachTree()
+      insert(bst, [20, 15, 10])
+      bst.delete(10)
+      expect(bst.size()).toEqual(2)
+      expect(bst.height()).toEqual(2)
+      expect(bst.traverseInLevelOrder([20, 15]))
+    })
+
+
+    // it('deletes 10 after inserting [20, 10, 7, 15, 12]', () => {
+    //   const bst = new BinarySerachTree()
+    //   insert(bst, [20, 10, 7, 15, 12])
+    //   bst.delete(10)
+    //   expect(bst.size()).toEqual(4)
+    //   expect(bst.height()).toEqual(3)
+    //   expect(bst.traverseInLevelOrder([20, 12, 7, 15]))
+    // })
 
   })
 
@@ -111,7 +138,8 @@ describe('binary search tree', () => {
       bst.insert(2)
       bst.insert(7)
       bst.deleteMin()
-      expect(bst.traverseInLevelOrder([7]))
+      expect(bst.size()).toEqual(1)
+      expect(bst.traverseInLevelOrder()).toEqual([7])
     })
 
     it('deletes when [7, 2] elements', () => {
@@ -119,6 +147,7 @@ describe('binary search tree', () => {
       bst.insert(7)
       bst.insert(2)
       bst.deleteMin()
+      expect(bst.size()).toEqual(1)
       expect(bst.traverseInLevelOrder()).toEqual([7])
     })
 
@@ -128,6 +157,7 @@ describe('binary search tree', () => {
       bst.insert(5)
       bst.insert(7)
       bst.deleteMin()
+      expect(bst.size()).toEqual(2)
       expect(bst.traverseInLevelOrder()).toEqual([5, 7])
     })
 

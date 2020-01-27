@@ -29,8 +29,12 @@ class BinarySearchTree {
   }
 
   size() {
-    if (this.root)
-      return this.root.size
+    return this._size(this.root)
+  }
+
+  _size(node) {
+    if (node)
+      return node.size
     return 0
   }
 
@@ -56,6 +60,7 @@ class BinarySearchTree {
         return node.right
       } else {
         node.left = deleteMinRecursive(node.left)
+        node.size = this._size(node.left) + 1 + this._size(node.right)
         return node
       }
     }
@@ -87,7 +92,7 @@ class BinarySearchTree {
           left: node.left,
           right: node.right,
           value: minOnTheRight,
-          size: 1,
+          size: this._size(node.left) + 1 + this._size(node.right),
         }
       } else if (elem < node.value) {
         node.left = deleteRecursive(node.left, elem)
