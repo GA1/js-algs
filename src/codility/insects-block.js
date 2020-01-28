@@ -1,4 +1,4 @@
-const Queue = require('../various/queue').Queue;
+const Queue = require('../datastructures-and-classical-algorithms/queue').Queue;
 
 function InsectBlock(top, right, bottom, left) {
   this.top = top
