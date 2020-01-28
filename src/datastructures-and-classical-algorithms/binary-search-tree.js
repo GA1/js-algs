@@ -180,6 +180,14 @@ class BinarySearchTree {
     }
     return traversed;
   }
+
+  isBalanced() {
+    if (this.size() === 0) {
+      return true
+    }
+    const N = this.height()
+    return N * (N - 1) / 2 < this.size()
+  }
 }
 
 

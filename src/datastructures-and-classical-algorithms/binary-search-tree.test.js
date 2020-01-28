@@ -1,4 +1,4 @@
-const { BinarySerachTree } = require("./binary-serach-tree");
+const { BinarySerachTree } = require("./binary-search-tree");
 
 describe('binary search tree', () => {
 
@@ -460,6 +460,37 @@ describe('binary search tree', () => {
         bst.insert(2)
         bst.insert(9)
         expect(bst.traverseInLevelOrder()).toEqual([5, 3, 9, 1, 0, 2])
+      })
+    })
+
+    describe('isBalanced', () => {
+      it('after creation', () => {
+        const bst = new BinarySerachTree()
+        expect(bst.isBalanced()).toEqual(true)
+      })
+
+      it('after adding 2', () => {
+        const bst = new BinarySerachTree()
+        bst.insert(2)
+        expect(bst.isBalanced()).toEqual(true)
+      })
+
+      it('after adding 7, 5, 2', () => {
+        const bst = new BinarySerachTree()
+        insert(bst, [7, 5, 2])
+        expect(bst.isBalanced()).toEqual(false)
+      })
+
+      it('after adding 2, 1, 5, 7', () => {
+        const bst = new BinarySerachTree()
+        insert(bst, [2, 1, 5, 7])
+        expect(bst.isBalanced()).toEqual(true)
+      })
+
+      it('after adding 10, 5, 15, 2, 6, 12, 17', () => {
+        const bst = new BinarySerachTree()
+        insert(bst, [10, 5, 15, 2, 6, 12, 17])
+        expect(bst.isBalanced()).toEqual(true)
       })
     })
   })
