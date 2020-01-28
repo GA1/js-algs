@@ -91,22 +91,23 @@ class LinkedList {
     return result
   }
 
-
-
-  // delete(index) {
-  //   if (this._isEmpty()) {
-  //     throw new Error('Unsupported Operation: can\'t delete elements from an empty list')
-  //   }
-  //   if (this.size() <= index) {
-  //     throw new Error(`Unsupported Operation: element with the index: ${index} can\'t be deleted because it\'s bigger than the size of the list`)
-  //   }
-  //   let i = 0
-  //   let temp = head
-  //   while (i <= index) {
-  //     temp = temp.goNext
-  //   }
-  //
-  // }
+  delete(index) {
+    if (this._isEmpty()) {
+      throw new Error('Unsupported Operation: can\'t delete elements from an empty list')
+    }
+    if (this.size() <= index) {
+      throw new Error(`Unsupported Operation: element with the index: ${index} can\'t be deleted because it\'s bigger than the size of the list`)
+    }
+    let i = 0
+    let temp = this.head
+    while (i < index) {
+      temp = temp.next
+      i++
+    }
+    temp.prev.next = temp.next
+    temp.next.prev = temp.prev
+    this.N--
+  }
 }
 
 class Iterator {

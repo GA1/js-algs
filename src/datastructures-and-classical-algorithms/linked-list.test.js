@@ -271,33 +271,45 @@ describe('Linked list', () => {
     })
   })
 
-  // describe('delete', () => {
-  //   it('throws when list is empty', () => {
-  //     const ll = new LinkedList()
-  //     try {
-  //       ll.delete(7)
-  //       expect(true).toBe(false);
-  //     } catch (e) {
-  //       expect(e.message).toBe('Unsupported Operation: can\'t delete elements from an empty list')
-  //     }
-  //   })
-  //
-  //   it('throws when the index is too big', () => {
-  //     const ll = new LinkedList()
-  //     try {
-  //       ll.append(2)
-  //       ll.delete(7)
-  //       expect(true).toBe(false);
-  //     } catch (e) {
-  //       expect(e.message).toBe('Unsupported Operation: element with the index: 7 can\'t be deleted because it\'s bigger than the size of the list')
-  //     }
-  //   })
-  //
-  //   it('returns correct for list [2]', () => {
-  //     const ll = new LinkedList()
-  //     ll.append(2)
-  //     expect(ll.get(-1)).toBe(2);
-  //   })
-  // })
+  describe('delete', () => {
+    it('throws when list is empty', () => {
+      const ll = new LinkedList()
+      try {
+        ll.delete(7)
+        expect(true).toBe(false);
+      } catch (e) {
+        expect(e.message).toBe('Unsupported Operation: can\'t delete elements from an empty list')
+      }
+    })
+
+    it('throws when the index is too big', () => {
+      const ll = new LinkedList()
+      try {
+        ll.append(2)
+        ll.delete(7)
+        expect(true).toBe(false);
+      } catch (e) {
+        expect(e.message).toBe('Unsupported Operation: element with the index: 7 can\'t be deleted because it\'s bigger than the size of the list')
+      }
+    })
+
+    it("deletes correctly for list ['a']", () => {
+      const ll = new LinkedList()
+      ll.append('a')
+      ll.delete(0)
+      expect(ll.size()).toEqual(0);
+      expect(ll.traverse()).toEqual([]);
+    })
+
+    it("returns correct for list ['a', 'b', 'c']", () => {
+      const ll = new LinkedList()
+      ll.append('a')
+      ll.append('b')
+      ll.append('c')
+      ll.delete(1)
+      expect(ll.size()).toEqual(2);
+      expect(ll.traverse()).toEqual(['a', 'c']);
+    })
+  })
 
 })
