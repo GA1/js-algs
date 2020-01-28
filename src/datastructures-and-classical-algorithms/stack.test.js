@@ -1,7 +1,6 @@
 const Stack = require('./stack').Stack;
 
 describe('Stack', () => {
-
   it('when stack empty size is 0', () => {
     const stack = new Stack()
     expect(stack.size()).toBe(0);
