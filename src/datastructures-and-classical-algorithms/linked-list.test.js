@@ -1,6 +1,6 @@
 const { LinkedList } = require('./linked-list');
 
-describe('Binary search', () => {
+describe('Linked list', () => {
 
   describe('size', () => {
     it('returns 0 for empty list', () => {
@@ -139,4 +139,165 @@ describe('Binary search', () => {
       expect(ll.traverse()).toEqual([2, 7]);
     })
   })
+
+  describe('iterator', () => {
+    it('throws when list is empty', () => {
+      const ll = new LinkedList()
+      try {
+        ll.iterator();
+        expect(true).toBe(false)
+      } catch (e) {
+        expect(e.message).toBe('Unsupported operation: can\'t create iterator from an empty linked list')
+      }
+    })
+
+    describe('isUpToDate', () => {
+      it("returns true before modification", () => {
+        const ll = new LinkedList()
+        ll.append('a')
+        const it = ll.iterator();
+        expect(it.isUpToDate()).toBe(true)
+      })
+
+      it("returns false after modification", () => {
+        const ll = new LinkedList()
+        ll.append('a')
+        const it = ll.iterator();
+        ll.append('b')
+        expect(it.isUpToDate()).toBe(false)
+      })
+    })
+
+    describe('goNext', () => {
+      it("iterates through list ['a']", () => {
+        const ll = new LinkedList()
+        ll.append('a')
+        const it = ll.iterator();
+        expect(it.getCurrent()).toBe('a')
+        it.goNext()
+        expect(it.getCurrent()).toBe('a')
+      })
+
+      it("iterates through list ['a', 'b', 'c']", () => {
+        const ll = new LinkedList()
+        ll.append('a')
+        ll.append('b')
+        ll.append('c')
+        const it = ll.iterator();
+        expect(it.getCurrent()).toBe('a')
+        it.goNext()
+        expect(it.getCurrent()).toBe('b')
+        it.goNext()
+        expect(it.getCurrent()).toBe('c')
+        it.goNext()
+        expect(it.getCurrent()).toBe('a')
+        it.goNext()
+        expect(it.getCurrent()).toBe('b')
+        it.goNext()
+        expect(it.getCurrent()).toBe('c')
+
+      })
+    })
+
+    describe('goPrev', () => {
+      it("iterates through list ['a']", () => {
+        const ll = new LinkedList()
+        ll.append('a')
+        const it = ll.iterator();
+        expect(it.getCurrent()).toBe('a')
+        it.goPrev()
+        expect(it.getCurrent()).toBe('a')
+      })
+
+      it("iterates through list ['a', 'b', 'c']", () => {
+        const ll = new LinkedList()
+        ll.append('a')
+        ll.append('b')
+        ll.append('c')
+        const it = ll.iterator();
+        expect(it.getCurrent()).toBe('a')
+        it.goPrev()
+        expect(it.getCurrent()).toBe('c')
+        it.goPrev()
+        expect(it.getCurrent()).toBe('b')
+        it.goPrev()
+        expect(it.getCurrent()).toBe('a')
+        it.goPrev()
+        expect(it.getCurrent()).toBe('c')
+        it.goPrev()
+        expect(it.getCurrent()).toBe('b')
+      })
+    })
+
+    describe('after notifyAboutModification', () => {
+      it("throws an exception when getCurrent is used", () => {
+        const ll = new LinkedList()
+        ll.append('a')
+        const it = ll.iterator();
+        ll.append('b')
+        try {
+          expect(it.getCurrent()).toBe('a')
+          expect(true).toBe(false)
+        } catch(e) {
+          expect(e.message).toBe('Unsupported operation: the list has been modified since the creation of the iterator')
+        }
+      })
+
+      it("throws an exception when goNext is used is used", () => {
+        const ll = new LinkedList()
+        ll.append('a')
+        const it = ll.iterator();
+        ll.append('b')
+        try {
+          expect(it.goNext()).toBe('a')
+          expect(true).toBe(false)
+        } catch(e) {
+          expect(e.message).toBe('Unsupported operation: the list has been modified since the creation of the iterator')
+        }
+      })
+
+      it("throws an exception when goPrev is used is used", () => {
+        const ll = new LinkedList()
+        ll.append('a')
+        const it = ll.iterator();
+        ll.append('b')
+        try {
+          expect(it.goPrev()).toBe('a')
+          expect(true).toBe(false)
+        } catch(e) {
+          expect(e.message).toBe('Unsupported operation: the list has been modified since the creation of the iterator')
+        }
+      })
+    })
+  })
+
+  // describe('delete', () => {
+  //   it('throws when list is empty', () => {
+  //     const ll = new LinkedList()
+  //     try {
+  //       ll.delete(7)
+  //       expect(true).toBe(false);
+  //     } catch (e) {
+  //       expect(e.message).toBe('Unsupported Operation: can\'t delete elements from an empty list')
+  //     }
+  //   })
+  //
+  //   it('throws when the index is too big', () => {
+  //     const ll = new LinkedList()
+  //     try {
+  //       ll.append(2)
+  //       ll.delete(7)
+  //       expect(true).toBe(false);
+  //     } catch (e) {
+  //       expect(e.message).toBe('Unsupported Operation: element with the index: 7 can\'t be deleted because it\'s bigger than the size of the list')
+  //     }
+  //   })
+  //
+  //   it('returns correct for list [2]', () => {
+  //     const ll = new LinkedList()
+  //     ll.append(2)
+  //     expect(ll.get(-1)).toBe(2);
+  //   })
+  // })
+
 })

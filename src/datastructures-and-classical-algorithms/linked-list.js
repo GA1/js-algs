@@ -4,6 +4,7 @@ class LinkedList {
     this.head = null
     this.tail = null
     this.N = 0
+    this.iterators = []
   }
 
   size() {
@@ -59,10 +60,11 @@ class LinkedList {
         value: v,
       };
       oldTail.next = newTail
-      this.head.prev = this.tail
       this.tail = newTail
+      this.head.prev = this.tail
     }
     this.N++
+    this.iterators.forEach(it => it.notifyAboutModification())
   }
 
   traverse() {
@@ -78,6 +80,69 @@ class LinkedList {
       i++
     }
     return result
+  }
+
+  iterator() {
+    if (this._isEmpty()) {
+      throw new Error('Unsupported operation: can\'t create iterator from an empty linked list')
+    }
+    const result = new Iterator(this.head);
+    this.iterators.push(result)
+    return result
+  }
+
+
+
+  // delete(index) {
+  //   if (this._isEmpty()) {
+  //     throw new Error('Unsupported Operation: can\'t delete elements from an empty list')
+  //   }
+  //   if (this.size() <= index) {
+  //     throw new Error(`Unsupported Operation: element with the index: ${index} can\'t be deleted because it\'s bigger than the size of the list`)
+  //   }
+  //   let i = 0
+  //   let temp = head
+  //   while (i <= index) {
+  //     temp = temp.goNext
+  //   }
+  //
+  // }
+}
+
+class Iterator {
+  constructor(head) {
+    this.current = head
+    this.hasListBeenModified = false
+    this.modificationExceptionMessage = 'Unsupported operation: the list has been modified since the creation of the iterator';
+  }
+
+  notifyAboutModification() {
+    this.hasListBeenModified = true
+  }
+
+  isUpToDate() {
+    return !this.hasListBeenModified
+  }
+
+  getCurrent() {
+    if (!this.isUpToDate()) {
+      throw new Error(this.modificationExceptionMessage)
+    }
+    return this.current.value
+  }
+
+  goPrev() {
+    if (!this.isUpToDate()) {
+      throw new Error(this.modificationExceptionMessage)
+    }
+    this.current = this.current.prev
+  }
+
+  goNext() {
+    if (!this.isUpToDate()) {
+      throw new Error(this.modificationExceptionMessage)
+    }
+    this.current = this.current.next
   }
 }
 
