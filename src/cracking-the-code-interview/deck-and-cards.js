@@ -25,7 +25,7 @@ class Deck {
   }
 
   shuffleRemaining() {
-    shuffle(this.cards)
+    this.cards = shuffle(this.cards)
   }
 
   pop() {
