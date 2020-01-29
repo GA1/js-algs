@@ -9,7 +9,7 @@ describe('HanoiTowerStack', () => {
 
   it('when popping an empty stack an exception should be thrown', () => {
     const stack = new HanoiTowerStack()
-    expect(() => {stack.pop()}).toThrow(new Error('HanoiTowerStack underflow'));
+    expect(() => {stack.pop()}).toThrow(new Error('Stack underflow'));
   })
 
   it('after pushing 1 element to stack size is 1', () => {
