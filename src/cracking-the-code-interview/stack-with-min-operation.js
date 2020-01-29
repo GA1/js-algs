@@ -11,7 +11,7 @@ StackWithMinOperation.prototype.isEmpty = function() {
 
 StackWithMinOperation.prototype.min = function () {
   if (this.isEmpty()) {
-    throw new Error('Unsupported operation: can\'t get min when stack is empty')
+    throw new Error('Unsupported operation: can\'t pop min when stack is empty')
   }
   return this.first.min
 }

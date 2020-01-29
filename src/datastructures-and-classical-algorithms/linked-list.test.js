@@ -30,7 +30,7 @@ describe('Linked list', () => {
           ll.get(0)
           expect(true).toBe(false);
         } catch (e) {
-          expect(e.message).toBe('Unsupported Operation: can\'t get any element if the list is empty')
+          expect(e.message).toBe('Unsupported Operation: can\'t pop any element if the list is empty')
         }
       })
 
@@ -40,7 +40,7 @@ describe('Linked list', () => {
           ll.get(7)
           expect(true).toBe(false);
         } catch (e) {
-          expect(e.message).toBe('Unsupported Operation: can\'t get any element if the list is empty')
+          expect(e.message).toBe('Unsupported Operation: can\'t pop any element if the list is empty')
         }
       })
     })

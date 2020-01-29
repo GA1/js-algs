@@ -17,7 +17,7 @@ class LinkedList {
 
   get(index) {
     if (this.size() === 0) {
-      throw new Error('Unsupported Operation: can\'t get any element if the list is empty')
+      throw new Error('Unsupported Operation: can\'t pop any element if the list is empty')
     }
     if (this.size() <= index || this.size() < Math.abs(index)) {
       throw new Error('Unsupported Operation: index is too big, it\'s absolute value can\'t be bigger than the size of the list')

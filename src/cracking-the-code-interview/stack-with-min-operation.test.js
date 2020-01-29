@@ -8,7 +8,7 @@ describe('StackWithMinOperationWithMinOperation', () => {
         stack.min()
         expect(false).toBe(true);
       } catch (e) {
-        expect(e.message).toBe('Unsupported operation: can\'t get min when stack is empty');
+        expect(e.message).toBe('Unsupported operation: can\'t pop min when stack is empty');
       }
     })
 
