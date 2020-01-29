@@ -1,7 +1,6 @@
 class SimpleStack {
   constructor() {
     this.first = null
-    this.size = 0
   }
 
   push(item) {
@@ -10,15 +9,13 @@ class SimpleStack {
       item: item,
       next: oldFirst,
     }
-    this.size++
   }
 
   pop() {
-    if (this.size === 0)
+    if (!this.first)
       throw Error('Stack underflow')
     const item = this.first.item
     this.first = this.first.next
-    this.size--
     return item
   }
 }
