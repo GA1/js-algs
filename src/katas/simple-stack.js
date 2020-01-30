@@ -4,7 +4,7 @@ class SimpleStack {
   }
 
   push(item) {
-    const oldFirst = this.first;
+    const oldFirst = this.first
     this.first = {
       item: item,
       next: oldFirst,
@@ -12,8 +12,7 @@ class SimpleStack {
   }
 
   pop() {
-    if (!this.first)
-      throw Error('Stack underflow')
+    if (!this.first) throw Error('Stack underflow')
     const item = this.first.item
     this.first = this.first.next
     return item
