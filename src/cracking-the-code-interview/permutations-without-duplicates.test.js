@@ -26,5 +26,4 @@ describe('permutationsWithoutDuplicates', () => {
     expect(result.has('cba')).toEqual(true)
     expect(result.size).toEqual(6)
   })
-
 })

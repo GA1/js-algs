@@ -8,14 +8,17 @@ function permutationsWithoutDuplicates(s) {
       acc.add(substring)
     } else {
       for (let i = 0; i < s.length; i++) {
-        permutationsWithoutDuplicatesRecursive(s.slice(0, i) + s.slice(i + 1), substring + s.charAt(i), acc)
+        permutationsWithoutDuplicatesRecursive(
+          s.slice(0, i) + s.slice(i + 1),
+          substring + s.charAt(i),
+          acc
+        )
       }
     }
   }
-  const result = new Set();
-  permutationsWithoutDuplicatesRecursive(s,'', result)
+  const result = new Set()
+  permutationsWithoutDuplicatesRecursive(s, '', result)
   return result
 }
 
 module.exports.permutationsWithoutDuplicates = permutationsWithoutDuplicates
-
