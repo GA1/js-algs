@@ -13,7 +13,7 @@ function smallestDifferencePairBetweenTwoArrays(a1, a2) {
   let i = 0,
     j = 0
   let best = Math.abs(a1Sorted[0] - a2Sorted[0])
-  while(i < N && j < M) {
+  while (i < N && j < M) {
     const temp = Math.abs(a1Sorted[i] - a2Sorted[j])
     if (temp < best) {
       best = temp
