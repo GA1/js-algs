@@ -25,12 +25,21 @@ describe('uniqueForms', () => {
     expect(uniqueForms('faço\tfaz')).toEqual(expected)
   })
 
+
   it('disregard duplicates "faço faz faço"', () => {
     const expected = {
       string: 'faço, faz',
       numberOfUniqueForms: 2,
     }
     expect(uniqueForms('faço faz faço')).toEqual(expected)
+  })
+
+  it('removes everything in between parentheses', () => {
+    const expected = {
+      string: 'faço, faz',
+      numberOfUniqueForms: 2,
+    }
+    expect(uniqueForms('faço faz (você)')).toEqual(expected)
   })
 
   it('works for Portuguese fazer', () => {
