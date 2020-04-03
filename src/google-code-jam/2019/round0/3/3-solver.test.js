@@ -1,15 +1,15 @@
-const getTwoPrimeFactorsOfProduct = require('./3-solver').getTwoPrimeFactorsOfProduct;
-const isSquareOfPrimeNumber = require('./3-solver').isSquareOfPrimeNumber;
-const primes = require('./3-solver').primes;
-const solveSingleCase = require('./3-solver').solveSingleCase;
+const getTwoPrimeFactorsOfProduct = require('./3-solver')
+  .getTwoPrimeFactorsOfProduct
+const isSquareOfPrimeNumber = require('./3-solver').isSquareOfPrimeNumber
+const primes = require('./3-solver').primes
+const solveSingleCase = require('./3-solver').solveSingleCase
 
-describe('3', () => {
-
-  it('dumym test', () => {
-    expect(1).toEqual(1)
+describe('2019', () => {
+  describe('3', () => {
+    it('dumym test', () => {
+      expect(1).toEqual(1)
+    })
   })
-
-})
   // describe('getTwoPrimeFactorsOfProduct', () => {
   //
   //   it('[2, 3, 5, 7, 11, 13, 17, 19]]', () => {
@@ -72,4 +72,4 @@ describe('3', () => {
   //   });
   //
   // })
-
+})

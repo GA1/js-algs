@@ -1,7 +1,7 @@
 const solveSingleCase = require('./1-solver').solveSingleCase
 const solveAllCases = require('./1-solver').solveAllCases
 
-describe('2019', () => {
+describe('2020', () => {
   describe('1', () => {
     describe('getTwoPrimeFactorsOfProduct', () => {
       it('34', () => {
