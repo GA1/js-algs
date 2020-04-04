@@ -2,7 +2,7 @@ const fs = require('fs')
 
 function getLines(filePath) {
   const text = fs.readFileSync(filePath,'utf8')
-  return text.split('\n').filter(line => line !== '')
+  return text.split('\n').filter(line => line !== 'æ')
 }
 
 function saveString(filePath, stringToSave) {
