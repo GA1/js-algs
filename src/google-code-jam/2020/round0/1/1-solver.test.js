@@ -1,32 +1,47 @@
 const solveSingleCase = require('./1-solver').solveSingleCase
-const solveAllCases = require('./1-solver').solveAllCases
 
 describe('2020', () => {
-  describe('1', () => {
-    describe('getTwoPrimeFactorsOfProduct', () => {
-      it('34', () => {
-        expect(solveSingleCase(34)).toEqual([33, 1])
+  describe('1st task', () => {
+    describe('solveSingleCase', () => {
+      it('[[1, 2, 3, 4], [2, 1, 4,  3], [3, 4, 1, 2], [4, 3, 2, 1]]', () => {
+        expect(
+          solveSingleCase([
+            [1, 2, 3, 4],
+            [2, 1, 4, 3],
+            [3, 4, 1, 2],
+            [4, 3, 2, 1],
+          ])
+        ).toEqual([4, 0, 0])
       })
 
-      it('444', () => {
-        expect(solveSingleCase(444)).toEqual([333, 111])
+      it('[[2, 2, 2, 2], [2, 3, 2, 3], [2, 2, 2, 3], [2, 2, 2, 2]]', () => {
+        expect(
+          solveSingleCase([
+            [2, 2, 2, 2],
+            [2, 3, 2, 3],
+            [2, 2, 2, 3],
+            [2, 2, 2, 2],
+          ])
+        ).toEqual([9, 4, 4])
       })
 
-      it('224222', () => {
-        expect(solveSingleCase(224222)).toEqual([223222, 1000])
+      it('[[1, 2], [0, 2]]', () => {
+        expect(
+          solveSingleCase([
+            [1, 2],
+            [0, 2],
+          ])
+        ).toEqual([3, 0, 1])
       })
 
-      it('84', () => {
-        expect(solveSingleCase(84)).toEqual([83, 1])
-      })
-    })
-
-    describe('solveAllCases', () => {
-      it('2, 4, 940', () => {
-        expect(solveAllCases([2, 4, 940])).toEqual([
-          'Case #1: 3 1',
-          'Case #2: 930 10',
-        ])
+      it('[[2, 1, 3], [1, 3, 2], [1, 2, 3]]', () => {
+        expect(
+          solveSingleCase([
+            [2, 1, 3],
+            [1, 3, 2],
+            [1, 2, 3],
+          ])
+        ).toEqual([8, 0, 2])
       })
     })
   })

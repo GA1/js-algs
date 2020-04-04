@@ -1,55 +1,90 @@
-'use strict';
+'use strict'
 
-const fs = require('fs');
+const { getLines } = require('../../../fileUtils')
 
-// process.stdin.resume();
-// process.stdin.setEncoding('utf-8');
+process.stdin.resume();
+process.stdin.setEncoding('utf-8');
 
-let inputStrings = '';
-let currentLine = 0;
+let inputStrings = ''
 
-// process.stdin.on('data', inputStdin => {
-//   inputStrings += inputStdin;
-// });
-//
-// process.stdin.on('end', _ => {
-//   inputStrings = inputStrings.trim().split('\n').map(str => str.trim());
-//
-//   main(inputStrings);
-// });
+process.stdin.on('data', inputStdin => {
+  inputStrings += inputStdin;
+});
 
+process.stdin.on('end', _ => {
+  inputStrings = inputStrings.trim().split('\n').map(str => str.trim());
 
-function solveSingleCase(n) {
-  const nString = n.toString()
-  let toSubtract = 0
-  let power = 1
-  for (let i = nString.length - 1; 0 <= i; i--) {
-    const digit = nString.charAt(i)
-    if (digit === '4')
-      toSubtract += power
-    power *= 10
+  main(inputStrings);
+});
 
+function solveSingleCase(m) {
+  const N = m[0].length
+  const getTrace = () => {
+    let result = 0
+    for (let i = 0; i < N; i++) {
+      result += m[i][i]
+    }
+    return result
   }
-  return [n - toSubtract, toSubtract]
+
+  const getNumberOfRepeatedRows = () => {
+    let result = 0
+    for (let i = 0; i < N; i++) {
+      const elements = new Set()
+      for (let j = 0; j < N; j++) {
+        elements.add(m[i][j])
+      }
+      if (elements.size !== N) {
+        result++
+      }
+    }
+    return result
+  }
+  const getNumberOfRepeatedColumns = () => {
+    let result = 0
+    for (let i = 0; i < N; i++) {
+      const elements = new Set()
+      for (let j = 0; j < N; j++) {
+        elements.add(m[j][i])
+      }
+      if (elements.size !== N) {
+        result++
+      }
+    }
+    return result
+  }
+  return [getTrace(), getNumberOfRepeatedRows(), getNumberOfRepeatedColumns()]
 }
 
-
-function solveAllCases(inputStrings) {
+function solveAllCases(lines) {
   const solutions = []
-  for (let i = 1; i < inputStrings.length; i++) {
-    const inputString = inputStrings[i];
-    const result = solveSingleCase(parseInt(inputString))
-    solutions.push('Case #' + i.toString() + ': ' + result[0].toString() +  ' ' + result[1].toString())
+  const numberOfCases = Number(lines[0])
+  let i,
+    j = 0
+  const linesForProblems = lines.slice(1)
+  for (i = 0; i < numberOfCases; i++) {
+    const N = Number(linesForProblems[j])
+    j++
+    const m = []
+    let k = 0
+    for (; k < N; k++) {
+      const split = linesForProblems[j + k].split(' ')
+      m.push(split.map(s => Number(s)))
+    }
+    j += N
+    const r = solveSingleCase(m)
+    console.log(`Case #${i + 1}: ${r[0]} ${r[1]} ${r[2]}`)
   }
   return solutions
 }
 
-
-function main(inputStrings) {
-  const solutions = solveAllCases(inputStrings)
+function main(lines) {
+  const solutions = solveAllCases(lines)
   console.log(solutions.join('\n'))
 }
 
+// const lines = getLines('./input.txt')
+// main(lines)
+
 module.exports.solveAllCases = solveAllCases
 module.exports.solveSingleCase = solveSingleCase
-
