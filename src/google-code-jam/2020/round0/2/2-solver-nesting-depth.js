@@ -53,8 +53,8 @@ function main(lines) {
   solveAllCases(lines)
 }
 
-const lines = getLines('./input.txt')
-main(lines)
+// const lines = getLines('./input.txt')
+// main(lines)
 
 module.exports.solveAllCases = solveAllCases
 module.exports.solveSingleCase = solveSingleCase
