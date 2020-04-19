@@ -2,11 +2,11 @@
 
 const { getLines } = require('../../../fileUtils')
 
-process.stdin.resume();
-process.stdin.setEncoding('utf-8');
-
-let inputStrings = ''
-
+// process.stdin.resume();
+// process.stdin.setEncoding('utf-8');
+//
+// let inputStrings = ''
+//
 // process.stdin.on('data', inputStdin => {
 //   inputStrings += inputStdin;
 // });

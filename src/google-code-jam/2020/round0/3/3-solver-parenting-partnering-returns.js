@@ -2,23 +2,23 @@
 
 const { getLines } = require('../../../fileUtils')
 
-process.stdin.resume()
-process.stdin.setEncoding('utf-8')
-
-let inputStrings = ''
-
-process.stdin.on('data', inputStdin => {
-  inputStrings += inputStdin
-})
-
-process.stdin.on('end', _ => {
-  inputStrings = inputStrings
-    .trim()
-    .split('\n')
-    .map(str => str.trim())
-
-  main(inputStrings)
-})
+// process.stdin.resume()
+// process.stdin.setEncoding('utf-8')
+//
+// let inputStrings = ''
+//
+// process.stdin.on('data', inputStdin => {
+//   inputStrings += inputStdin
+// })
+//
+// process.stdin.on('end', _ => {
+//   inputStrings = inputStrings
+//     .trim()
+//     .split('\n')
+//     .map(str => str.trim())
+//
+//   main(inputStrings)
+// })
 
 const TYPES = Object.freeze({
   START: 1,
