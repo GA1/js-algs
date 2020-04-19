@@ -2,6 +2,9 @@ const { solveSingleCase } = require('./1-solver')
 
 describe('2020, 1B', () => {
   describe('Expogo', () => {
+    it('dummy', () => {
+      expect(1).toEqual(1)
+    })
     // it('2, 3', () => {
     //   expect(solveSingleCase(2, 3)).toEqual('SEN')
     // })
